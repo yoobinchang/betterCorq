@@ -15,6 +15,24 @@ document.body.addEventListener('mouseup', () => {
   toggleMode = null;
 });
 
+//upload button
+document.getElementById('file-upload').addEventListener('change', (event) => {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    const content = e.target.result;
+    console.log("Uploaded file content:", content);
+
+    // TODO: Use AI or logic to extract free time from `content`
+    // For now, just show a placeholder alert
+    showCustomAlert("File uploaded! We'll extract your availability soon.");
+  };
+  reader.readAsText(file);
+});
+
+
 // Generate calendar grid
 for (let i = 16; i < intervalCount; i++) {
   let hour = Math.floor(i / 2);
@@ -31,7 +49,6 @@ for (let i = 16; i < intervalCount; i++) {
     cell.classList.add('cell');
     cell.style.height = cellHeight + 'px';
 
-    // Assign day and time
     const today = new Date();
     const cellDate = new Date(today);
     cellDate.setDate(today.getDate() + j);
@@ -40,7 +57,6 @@ for (let i = 16; i < intervalCount; i++) {
     cell.setAttribute('data-day', dayStr);
     cell.setAttribute('data-time', timeStr);
 
-    // Selection logic
     cell.addEventListener('mousedown', () => {
       isMouseDown = true;
       toggleMode = cell.classList.contains('selected') ? 'remove' : 'add';
@@ -93,7 +109,7 @@ function getSelectedTimes() {
     const isConsecutive =
       next &&
       current.day === nextDay &&
-      nextTime[0] * 60 + nextTime[1] === h * 60 + m + 15; // 15-min slots
+      nextTime[0] * 60 + nextTime[1] === h * 60 + m + 30; // 30-min slots
 
     if (!isConsecutive) {
       end = current;
@@ -160,3 +176,10 @@ function restoreAvailability() {
 }
 
 restoreAvailability();
+
+// Clear button logic
+document.getElementById("clear-button").addEventListener("click", () => {
+  const selectedCells = document.querySelectorAll(".cell.selected");
+  selectedCells.forEach(cell => cell.classList.remove("selected"));
+});
+

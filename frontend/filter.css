@@ -6,6 +6,13 @@
   --white: #f2eeee;
   --black: #181818;
 }
+body {
+  background-color: var(--white);
+}
+.cell {
+  background-color: rgb(250, 250, 250);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -63,6 +70,42 @@
 .calendar-intro p {
   font-size: 1.5vw;
   color: var(--black);
+}
+
+.upload-container {
+  display: flex;
+  justify-content: center;
+}
+
+.upload-label {
+  width: 10vw;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: var(--white);
+  color: var(--red);
+  border: 5px solid var(--red);
+  font-size: 1.5vw;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+#file-upload {
+  display: none;
+}
+
+.upload-label:hover {
+  background-color: var(--red);   /* optional hover effect */
+  color: var(--white);            /* optional hover effect */
+}
+
+.day-header {
+  border-left: 1px solid #ccc;
+  padding: 5px 0;
+  background-color: var(--red);   /* red background */
+  color: var(--white);            /* white text for contrast */
 }
 
 

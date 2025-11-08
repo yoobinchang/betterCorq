@@ -16,7 +16,6 @@
         <a href="home.html" class="nav-link">Home</a>
         <a href="events.html" class="nav-link">Events</a>
         <a href="filter.html" class="nav-link"><u>Filter</u></a>
-        <a href="profile.html" class="nav-link">Profile</a>
     </div>
   </div>
 
@@ -24,7 +23,15 @@
 <div class="calendar-intro">
   <h3>Select Your Free Time</h3>
   <p>Click and drag across the calendar to highlight when you're free. We'll match you with events that fit your schedule!</p>
+  <p>Upload your schedule to automatically get suggested free time.</p>
 </div>
+
+
+<div class="upload-container">
+  <label for="file-upload" class="upload-label">Upload Schedule</label>
+  <input type="file" id="file-upload" accept=".txt,.csv,.ics,.json" />
+</div>
+
 
 
 <!-- Main Content -->
@@ -44,6 +51,7 @@
 
 <div class="button-container">
   <button id="save-button">Save</button>
+  <button id="clear-button">Clear</button>
 </div>
 
   
