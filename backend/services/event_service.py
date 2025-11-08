@@ -1,6 +1,7 @@
 # load event data, matching algorithm that suggests events based on user's free time
 import json
 from datetime import datetime
+from utils.time_utils import calculate_free_time, is_within_tolerance
 
 EVENTS_PATH = "backend/data/events_est.json"
 SCHEDULE_PATH = "backend/data/schedule.json"
@@ -11,28 +12,25 @@ def load_events():
         return json.load(f)
 
 
-def recommend_events():
+def recommend_events(events, schedule_data, selected_days, tolerance):
     """
-    Compare user's free time (from schedule.json)
-    with campus events, and return events that fit.
+    Recommend events that fit within user's free time,
+    using user-defined tolerance (in minutes).
     """
-    try:
-        with open(SCHEDULE_PATH, "r") as f:
-            schedule = json.load(f)
-    except FileNotFoundError:
-        return {"error": "No schedule found."}
+    free_times = calculate_free_time(schedule_data)
+    recommended = []
 
-    with open(EVENTS_PATH, "r") as f:
-        events = json.load(f)
+    for e in events:
+        day = e["day"]
+        if day not in selected_days:
+            continue  # skip unselected days
 
-    # Extract busy time ranges
-    busy_times = []
-    for cls in schedule.get("classes", []):
-        busy_times.append({
-            "day": cls["day"],
-            "start": cls["start"],
-            "end": cls["end"]
-        })
+        for free_start, free_end in free_times.get(day, []):
+            if is_within_tolerance(e["start"], free_start, free_end, tolerance):
+                recommended.append(e)
+                break
+
+    return recommended
 
     # Simple matching algorithm: recommend events that don’t overlap
     recommended = []
