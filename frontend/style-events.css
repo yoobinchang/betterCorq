@@ -24,16 +24,27 @@
 }
 #nav-side-bar{
   position: absolute;
-  margin-left: 100vh;
-  margin-top: 3vh;
-  background-color: var(--red);
-  color: var(--black);
-  border-radius: 20px;
-padding: 20px 40px;  text-align: center;
-  font-size: 22px;
-  font-weight: bold;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  display: flex;               /* side by side */
+  justify-content: left;     /* center horizontally */
+  gap: 2.5vw;                   /* spacing between buttons */
+  margin-top: 20px;            /* spacing from text above */
+  margin-left: 80vw;
 
+}
+#nav-side-bar button:hover {
+  background-color: var(--red);   /* optional hover effect */
+  color: var(--white);            /* optional hover effect */
+}
+
+#nav-side-bar button {
+  width: 15vw;
+  padding: 15px 30px;
+  background-color: var(--white);
+  color: var(--red);
+  border: 5px solid var(--red);
+  font-size: 2vw;
+  border-radius: 15px;
+  cursor: pointer;
 }
 .nav-link2 {
   color: var(--black);
