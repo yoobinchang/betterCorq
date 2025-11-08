@@ -2,3 +2,7 @@ Flask
 requests
 python-dotenv
 pytz
+flask-sqlalchemy
+pyjwt
+werkzeug
+sqlalchemy
