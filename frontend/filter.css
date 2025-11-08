@@ -4,6 +4,7 @@
   --med-red: #6b000d;
   --dark-red: #7c0808;
   --white: #f2eeee;
+  --black: #181818;
 }
 * {
   margin: 0;
@@ -45,6 +46,23 @@
 }
 .nav-link:hover {
   color: var(--med-red);
+}
+
+.calendar-intro {
+  margin-top: 5vh;
+  margin-bottom: 2vh;
+  text-align: center;
+}
+
+.calendar-intro h3 {
+  font-size: 5vw;
+  color: var(--dark-red);
+  margin-bottom: 0vh;
+}
+
+.calendar-intro p {
+  font-size: 1.5vw;
+  color: var(--black);
 }
 
 
