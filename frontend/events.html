@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Styled Website</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style-events.css" />
 <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
 </head>
@@ -12,23 +12,43 @@
 
   <!-- Navigation Bar -->
   <div id="nav-bar">
+    <img src="https://www.stonybrook.edu/marcom/_images/2015/10/main_logo.jpg" alt="Profile" />
     <a href="home.html" class="nav-link">Home</a>
-    <a href="events.html" class="nav-link">Events</a>
+    <a href="events.html" class="nav-link current">Events</a>
     <a href="filter.html" class="nav-link">Filter</a>
     <a href="profile.html" class="nav-link">Profile</a>
+    
+  </div>
+  <div id="nav-side-bar">
+    <a href="home.html" class="nav-link2">Generate Schedule</a>
   </div>
 
   <!-- Main Content -->
   <div class="content-container">
     <div class="left-content">
-      <h3>Welcome to Better Corq!</h3>
-      <p>corq sucks bro, so we've made it better.</p>
-      <a href="#">(coming soon)</a>
+      <h3>Events</h3>
+      <p>These are the events for the week</p>
+
+       <div class="event-container">
+        <div class="event">Event 1
+            <img src="https://www.stonybrook.edu/erp/_images/wolfie.png" alt="Profile" />
+        </div>
+        <div class="event">Event 2
+            <img src="https://www.stonybrook.edu/erp/_images/wolfie.png" alt="Profile" />
+        </div>
+        <div class="event">Event 3
+            <img src="https://www.stonybrook.edu/erp/_images/wolfie.png" alt="Profile" />
+        </div>
+        <div class="event">Event 4
+            <img src="https://www.stonybrook.edu/erp/_images/wolfie.png" alt="Profile" />
+        </div>
+    </div>
     </div>
 
     <div class="right-content">
-      <img src="https://via.placeholder.com/300" alt="Profile" />
     </div>
+
+   
   </div>
 
 </body>
