@@ -1,0 +1,931 @@
+{
+  "@odata.count": 1576,
+  "@search.coverage": null,
+  "@search.facets": {
+    "CategoryIds": [
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "11182",
+        "count": 166
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "13468",
+        "count": 40
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "13470",
+        "count": 61
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "13471",
+        "count": 88
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "13472",
+        "count": 46
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "17379",
+        "count": 23
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "17475",
+        "count": 99
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "17497",
+        "count": 7
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "17710",
+        "count": 23
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "17711",
+        "count": 30
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "18309",
+        "count": 4
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "19274",
+        "count": 2
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "19275",
+        "count": 9
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "19278",
+        "count": 6
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "19279",
+        "count": 5
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "20105",
+        "count": 5
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "21234",
+        "count": 1
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "21483",
+        "count": 1
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "21766",
+        "count": 12
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "21835",
+        "count": 3
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "22124",
+        "count": 1
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "22153",
+        "count": 24
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "23273",
+        "count": 1
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "23421",
+        "count": 1
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "24150",
+        "count": 1
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "2759",
+        "count": 21
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "2761",
+        "count": 112
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "3981",
+        "count": 5
+      }
+    ],
+    "BenefitNames": [
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "Credit",
+        "count": 17
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "Free Food",
+        "count": 194
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "Free Stuff",
+        "count": 182
+      }
+    ],
+    "Theme": [
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "Arts",
+        "count": 172
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "Athletics",
+        "count": 390
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "CommunityService",
+        "count": 89
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "Cultural",
+        "count": 202
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "Fundraising",
+        "count": 26
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "GroupBusiness",
+        "count": 15
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "Social",
+        "count": 264
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "Spirituality",
+        "count": 54
+      },
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": "ThoughtfulLearning",
+        "count": 364
+      }
+    ],
+    "BranchId": [
+      {
+        "type": 0,
+        "from": null,
+        "to": null,
+        "value": 65738,
+        "count": 1576
+      }
+    ]
+  },
+  "value": [
+    {
+      "id": "11855010",
+      "institutionId": 126,
+      "organizationId": 295407,
+      "organizationIds": [],
+      "branchId": 65738,
+      "branchIds": [],
+      "organizationName": "Roosevelt Community",
+      "organizationProfilePicture": "30d620f0-c6de-4116-9bd7-f83515c334de112403ab-1097-4a9f-800f-4e216fad6768.jpg",
+      "organizationNames": [],
+      "name": "Pajama Movie Night",
+      "description": "<p>Join Greeley Hall for a fun night of Brave! There will be popcorn, cotton candy, and pizza!</p>",
+      "location": "Greeley Lounge",
+      "startsOn": "2025-11-07T02:00:00+00:00",
+      "endsOn": "2025-11-07T04:00:00+00:00",
+      "imagePath": "564f3ba0-692e-4526-ae42-72fd95be952f2181a93e-3f85-4343-9235-a96468c9d5fc.png",
+      "theme": "Social",
+      "categoryIds": [],
+      "categoryNames": [],
+      "benefitNames": [],
+      "visibility": "Public",
+      "status": "Approved",
+      "latitude": null,
+      "longitude": null,
+      "recScore": null,
+      "rsvpTotal": 0,
+      "@search.score": 99.99956
+    },
+    {
+      "id": "11599386",
+      "institutionId": 126,
+      "organizationId": 67327,
+      "organizationIds": [],
+      "branchId": 65738,
+      "branchIds": [],
+      "organizationName": "Taekwondo",
+      "organizationProfilePicture": "4aeebd74-da85-4e5f-9687-f1148083e70b5107b5e1-7c54-4ad8-b5cf-8261f924914d.png",
+      "organizationNames": [],
+      "name": "Taekwondo Practice - Thursday",
+      "description": "<p>Practice times are as follows:</p>\r\n<p>Monday 9:15 - 10:45 PM&nbsp;in Studio Room 128</p>\r\n<p>Thursday 9:15 - 10:45 PM in Studio Room 128</p>\r\n<p>Saturday 5:00 - 6:30 PM&nbsp; in Studio Room 128, in the Campus Rec. Center</p>\r\n<p>All skill levels are welcome! Experience is not required. We will teach the basics and fundamentals of taekwondo.</p>",
+      "location": "Campus Rec Center Room 128",
+      "startsOn": "2025-11-07T02:15:00+00:00",
+      "endsOn": "2025-11-07T03:45:00+00:00",
+      "imagePath": "0cb720e4-f224-4cb1-bcd6-628a89dbb44d4dc784aa-7199-4a0a-987c-38f6436a1562.png",
+      "theme": "Athletics",
+      "categoryIds": [],
+      "categoryNames": [],
+      "benefitNames": [],
+      "visibility": "Public",
+      "status": "Approved",
+      "latitude": null,
+      "longitude": null,
+      "recScore": null,
+      "rsvpTotal": 3,
+      "@search.score": 99.99845
+    },
+    {
+      "id": "11598368",
+      "institutionId": 126,
+      "organizationId": 66477,
+      "organizationIds": [],
+      "branchId": 65738,
+      "branchIds": [],
+      "organizationName": "Ballroom Dance Team",
+      "organizationProfilePicture": "871262fd-5728-4241-8354-13b2cd495f35e645f5db-e7fe-4b59-9b37-1682e440af81.png",
+      "organizationNames": [],
+      "name": "Ballroom Dance Team Fall 2025 Weekly Practices",
+      "description": "<p>The Ballroom Dance Team beginner lessons taught by Coach Repetti are hosted weekly in Rec 216 at the Wellness Center on Thursdays from 9:15 to 10:45 pm.</p>",
+      "location": "Rec Wellness Studio 216",
+      "startsOn": "2025-11-07T02:15:00+00:00",
+      "endsOn": "2025-11-07T03:45:00+00:00",
+      "imagePath": "ab805f7c-06ba-481e-8fbc-c86d6110416da144b6bc-8cb4-4e52-a572-be3d2d2296b5.png",
+      "theme": "Arts",
+      "categoryIds": [],
+      "categoryNames": [],
+      "benefitNames": [],
+      "visibility": "Public",
+      "status": "Approved",
+      "latitude": null,
+      "longitude": null,
+      "recScore": null,
+      "rsvpTotal": 0,
+      "@search.score": 99.99845
+    },
+    {
+      "id": "11700328",
+      "institutionId": 126,
+      "organizationId": 66446,
+      "organizationIds": [
+        "66446",
+        "67319",
+        "122791",
+        "366021"
+      ],
+      "branchId": 65738,
+      "branchIds": [
+        "65738"
+      ],
+      "organizationName": "Society of Hispanic Professional Engineers",
+      "organizationProfilePicture": "26051dc9-09b8-474a-b4ab-8f8fcfc76cf64beaf234-ed5b-445e-b080-e586de5b1c3e.png",
+      "organizationNames": [
+        "Society of Hispanic Professional Engineers",
+        "Biomedical Engineering Society",
+        "Department of Society & Technology - CSTEP ",
+        "National Society of Black Physicists Stony Brook Chapter"
+      ],
+      "name": "Pre-College Day ",
+      "description": "<p data-start=\"81\" data-end=\"444\">Join SHPE for Pre-College Day!</p>\r\n<p data-start=\"81\" data-end=\"444\"><br data-start=\"118\" data-end=\"121\" />On Thursday, November 7th from 9:00 AM &ndash; 1:00 PM in SAC Ballroom B, SHPE will be hosting an Brentwood High School students. The day will feature campus tours and hands-on exposure to STEM activities&nbsp;designed to inspire the next generation of STEM leaders.</p>\r\n<p data-start=\"446\" data-end=\"620\">We need your support to make this event a success! Volunteers will help with a variety of roles, from guiding students through activities to ensuring the day runs smoothly.</p>\r\n<p data-start=\"446\" data-end=\"620\">Come be part of this rewarding experience and help us show future Seawolves what STEM at Stony Brook is about!</p>",
+      "location": "SAC Ballroom B",
+      "startsOn": "2025-11-07T14:00:00+00:00",
+      "endsOn": "2025-11-07T18:00:00+00:00",
+      "imagePath": "201c726a-edfb-4dfa-8a8a-8ae20cd1ae46d825ea68-30a8-416a-8fd2-7d7bc13dde9e.png",
+      "theme": "ThoughtfulLearning",
+      "categoryIds": [],
+      "categoryNames": [],
+      "benefitNames": [],
+      "visibility": "Public",
+      "status": "Approved",
+      "latitude": "40.914890",
+      "longitude": "-73.120000",
+      "recScore": null,
+      "rsvpTotal": 4,
+      "@search.score": 99.94652
+    },
+    {
+      "id": "11517202",
+      "institutionId": 126,
+      "organizationId": 94329,
+      "organizationIds": [
+        "94329",
+        "419679"
+      ],
+      "branchId": 65738,
+      "branchIds": [
+        "65738"
+      ],
+      "organizationName": "Center for Prevention and Outreach",
+      "organizationProfilePicture": "9ff07663-f1d0-476e-8da4-68b07f5adef0916cf862-99b9-4cca-9d2a-80f28635100d.png",
+      "organizationNames": [
+        "Center for Prevention and Outreach",
+        "First Generation Students"
+      ],
+      "name": "Hands Only CPR Training: *First Generation Week Special*",
+      "description": "<p>Part of the CPO Upstander program - Hands Only CPR teaches you how to recognize cardiac arrest and respond with hand-only compressions. This is not a certification class.</p>\r\n<p>&nbsp;</p>\r\n<p><strong>You must register for this training at&nbsp;<a href=\"http://tinyurl.com/cpobystander\">tinyurl.com/cpobystander</a></strong></p>\r\n<p>&nbsp;</p>\r\n<p>To earn the&nbsp;<strong>Upstander Award</strong>&nbsp;(includes a certificate and graduation cord), you will need to complete the following:&nbsp;</p>\r\n<p><strong>May 2026 graduates:</strong>&nbsp;complete Red Watch Band, QPR and Green Dot by January 1, 2026</p>\r\n<p><strong>May 2027 graduates:&nbsp;</strong>complete Red Watch Band, QPR and Green Dot by January 1, 2027</p>\r\n<p><strong>May 2028 graduates:</strong>&nbsp;complete Red Watch Band, QPR, Green Dot AND Hands-Only CPR by January 1, 2028</p>\r\n<p><strong>May 2029 graduates:</strong>&nbsp;complete Red Watch Band, QPR, Green Dot AND Hands-Only CPR by January 1, 2029</p>\r\n<p>&nbsp;</p>\r\n<p><em>For accessibility needs please contact prevention_outreach@stonybrook.edu</em></p>",
+      "location": "Union 108",
+      "startsOn": "2025-11-07T16:00:00+00:00",
+      "endsOn": "2025-11-07T17:00:00+00:00",
+      "imagePath": "a770c5d8-006e-4917-a11e-aa06fee844a53f4d2660-8be5-4935-adea-740bc1b48ff7.png",
+      "theme": "ThoughtfulLearning",
+      "categoryIds": [
+        "11182",
+        "21766"
+      ],
+      "categoryNames": [
+        "Health & Wellness",
+        "First Generation Week"
+      ],
+      "benefitNames": [],
+      "visibility": "Public",
+      "status": "Approved",
+      "latitude": null,
+      "longitude": null,
+      "recScore": null,
+      "rsvpTotal": 0,
+      "@search.score": 99.93767
+    },
+    {
+      "id": "11855317",
+      "institutionId": 126,
+      "organizationId": 365952,
+      "organizationIds": [],
+      "branchId": 65738,
+      "branchIds": [],
+      "organizationName": "Skincare and Wellness Club",
+      "organizationProfilePicture": "4abb0030-d552-4945-9e66-0a783345751b8a3a0495-8259-4da7-8d14-fa10f46ac30c.png",
+      "organizationNames": [],
+      "name": "Pop Up Thrift Store",
+      "description": "<p>Come visit Skincare &amp; Wellness at the SAC Lobby for the pop up thrift store!</p>",
+      "location": "SAC Loft",
+      "startsOn": "2025-11-07T17:00:00+00:00",
+      "endsOn": "2025-11-07T21:00:00+00:00",
+      "imagePath": "a3a92850-2275-4328-939f-322de4580f35f93a6424-4458-461b-acdc-9e43021cdf6b.png",
+      "theme": "Fundraising",
+      "categoryIds": [],
+      "categoryNames": [],
+      "benefitNames": [],
+      "visibility": "Public",
+      "status": "Approved",
+      "latitude": null,
+      "longitude": null,
+      "recScore": null,
+      "rsvpTotal": 10,
+      "@search.score": 99.93324
+    },
+    {
+      "id": "11559121",
+      "institutionId": 126,
+      "organizationId": 94329,
+      "organizationIds": [],
+      "branchId": 65738,
+      "branchIds": [],
+      "organizationName": "Center for Prevention and Outreach",
+      "organizationProfilePicture": "9ff07663-f1d0-476e-8da4-68b07f5adef0916cf862-99b9-4cca-9d2a-80f28635100d.png",
+      "organizationNames": [],
+      "name": "Coping & Connection Survivor Support Space",
+      "description": "<p><span class=\"a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none\">CPO&rsquo;s Survivor Advocacy team hosts a weekly drop-in space focused on topics associated with survivor healing &amp; growth. The Coping &amp; Connection Survivor Support Space is not group therapy or counseling - it's a skill-building space where those who have experienced violence can learn more about ways to manage impacts &amp; develop a sense of personal empowerment.</span></p>\r\n<p><span class=\"a_GcMg font-feature-liga-off font-feature-clig-off font-feature-calt-off text-decoration-none text-strikethrough-none\">Email prevention_outreach@stonybrook.edu for accessibility needs.</span></p>",
+      "location": "CPO (Union 108)",
+      "startsOn": "2025-11-07T17:00:00+00:00",
+      "endsOn": "2025-11-07T18:00:00+00:00",
+      "imagePath": "f2b10280-1148-419c-89b4-92d90926ef39e87a802a-44f4-4b12-a88a-ff0060fde05f.png",
+      "theme": "ThoughtfulLearning",
+      "categoryIds": [
+        "11182"
+      ],
+      "categoryNames": [
+        "Health & Wellness"
+      ],
+      "benefitNames": [],
+      "visibility": "Public",
+      "status": "Approved",
+      "latitude": null,
+      "longitude": null,
+      "recScore": null,
+      "rsvpTotal": 2,
+      "@search.score": 99.93324
+    },
+    {
+      "id": "11820969",
+      "institutionId": 126,
+      "organizationId": 304577,
+      "organizationIds": [
+        "213701",
+        "304577"
+      ],
+      "branchId": 65738,
+      "branchIds": [
+        "65738"
+      ],
+      "organizationName": "Department of Political Science",
+      "organizationProfilePicture": "31613bc0-cead-4f47-8bec-cbf2a97374231fef5c7a-3520-40ac-b48a-824a49958177.png",
+      "organizationNames": [
+        "Career Center",
+        "Department of Political Science"
+      ],
+      "name": "Department of Political Science & the Career Center Present the Pre-Law Workshop for Political Science Students",
+      "description": "<p>Learn about the connections between a major in political science and law school! Additionally, learn about the process to apply to law school!</p>\r\n<p>&nbsp;</p>\r\n<p>In this workshop, we will review how a major in political science can help students succeed in law school. Additionally, the workshop will review the recommended timeline to apply to law school, resources to assist with studying for the LSAT and more!&nbsp;</p>",
+      "location": "Online",
+      "startsOn": "2025-11-07T17:00:00+00:00",
+      "endsOn": "2025-11-07T18:00:00+00:00",
+      "imagePath": "86779550-09f4-493c-a38d-a88a2b2058e322eec172-6db1-4f19-a9b5-736625ba78d8.png",
+      "theme": "ThoughtfulLearning",
+      "categoryIds": [
+        "17379"
+      ],
+      "categoryNames": [
+        "Virtual Event"
+      ],
+      "benefitNames": [],
+      "visibility": "Public",
+      "status": "Approved",
+      "latitude": null,
+      "longitude": null,
+      "recScore": null,
+      "rsvpTotal": 58,
+      "@search.score": 99.93324
+    },
+    {
+      "id": "11680305",
+      "institutionId": 126,
+      "organizationId": 72599,
+      "organizationIds": [],
+      "branchId": 65738,
+      "branchIds": [],
+      "organizationName": "National Society of Black Engineers",
+      "organizationProfilePicture": "1ad0b328-62d2-4bd4-b85d-8100a10095275e92f289-a9e2-4bad-87f4-6a85aac14508.png",
+      "organizationNames": [],
+      "name": "NSBE | Study Circuit",
+      "description": "<p>Study Circuit is NSBE&rsquo;s weekly power-up session designed to keep your academic and professional momentum flowing. This space connects members to share knowledge, tackle assignments, prep for exams, and build together. We&rsquo;ll be holding this space weekly to give members a dedicated environment to simply be productive.</p>",
+      "location": "FREY 102",
+      "startsOn": "2025-11-07T17:30:00+00:00",
+      "endsOn": "2025-11-07T18:20:00+00:00",
+      "imagePath": "1dbe86a2-3b86-440d-a4fe-9a20055d002478efdda5-5f97-4411-9f02-e3dd9f11282a.png",
+      "theme": "Social",
+      "categoryIds": [],
+      "categoryNames": [],
+      "benefitNames": [],
+      "visibility": "Public",
+      "status": "Approved",
+      "latitude": null,
+      "longitude": null,
+      "recScore": null,
+      "rsvpTotal": 0,
+      "@search.score": 99.93103
+    },
+    {
+      "id": "11547901",
+      "institutionId": 126,
+      "organizationId": 66584,
+      "organizationIds": [],
+      "branchId": 65738,
+      "branchIds": [],
+      "organizationName": "Company of Archers",
+      "organizationProfilePicture": "0a2d20d8-cf0d-4630-8212-5e622fd19de2807ce091-6053-4582-86b9-e38cf0eebd95.png",
+      "organizationNames": [],
+      "name": "Archery Outdoor Practice",
+      "description": "<p>Outdoor archery practice every Friday that is open to all Stony Brook students, including beginners and first timers! Targets are set up at varying distances on the field, with multiple set up at 10 meters and end targets up to 70 meters.&nbsp;</p>\r\n<p>Note: After 3:30 pm, 10m targets will be moved back to further distances for competitive practice</p>\r\n<p>&nbsp;</p>\r\n<p>General Practice (open to all SBU Students) - 1-3:30pm</p>\r\n<p>&nbsp;</p>\r\n<p>Competitive Practice (attended at least 5 prior practices) - 3:30-5pm</p>\r\n<p>&nbsp;</p>\r\n<p>All equipment is provided for archers, including bows, arrows, finger tabs, and safety equipment.&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>Location is at the SBU South P Lot 40 Field C. Hope to see you there!</p>",
+      "location": "Campus Recreation Outdoor South Field Complex - Field C (Grass)",
+      "startsOn": "2025-11-07T18:00:00+00:00",
+      "endsOn": "2025-11-07T22:00:00+00:00",
+      "imagePath": "7c7e31f3-e1ea-4afc-bb57-dfde88d24ca4286eb789-62d2-4717-a721-24178e5ce448.png",
+      "theme": "Athletics",
+      "categoryIds": [],
+      "categoryNames": [],
+      "benefitNames": [],
+      "visibility": "Public",
+      "status": "Approved",
+      "latitude": "40.896690",
+      "longitude": "-73.122650",
+      "recScore": null,
+      "rsvpTotal": 3,
+      "@search.score": 99.92882
+    },
+    {
+      "id": "11392056",
+      "institutionId": 126,
+      "organizationId": 66500,
+      "organizationIds": [],
+      "branchId": 65738,
+      "branchIds": [],
+      "organizationName": "Muslim Students’ Association",
+      "organizationProfilePicture": "06f83d71-9680-42a6-8c7a-466f55bd35671952496f-7cb2-464c-8086-7588f01a7151.png",
+      "organizationNames": [],
+      "name": "Jummah Prayer",
+      "description": "<p>Join us every Friday for on-campus Jumm'ah prayer &mdash; a peaceful and uplifting khutbah followed by congregational prayer. Open to all students, faculty, and staff.</p>",
+      "location": "Stony Brook Union Ballroom",
+      "startsOn": "2025-11-07T18:00:00+00:00",
+      "endsOn": "2025-11-07T19:00:00+00:00",
+      "imagePath": null,
+      "theme": "Spirituality",
+      "categoryIds": [
+        "2759"
+      ],
+      "categoryNames": [
+        "Religious Service / Celebration"
+      ],
+      "benefitNames": [],
+      "visibility": "Public",
+      "status": "Approved",
+      "latitude": "40.917150",
+      "longitude": "-73.122480",
+      "recScore": null,
+      "rsvpTotal": 0,
+      "@search.score": 99.92882
+    },
+    {
+      "id": "11547786",
+      "institutionId": 126,
+      "organizationId": 66452,
+      "organizationIds": [],
+      "branchId": 65738,
+      "branchIds": [],
+      "organizationName": "Table Tennis Club",
+      "organizationProfilePicture": "766afc96-f3f4-4514-85d6-1b767773e899846814a7-d55c-4f2d-9a79-04ed331e650b.jpeg",
+      "organizationNames": [],
+      "name": "Table Tennis Ping Pong Practice Meeting",
+      "description": "<p>4 meetings per week of general ping pong practices. All skill levels welcome. The tables will be set up for free play but if there are too many people, a couple of tables will be set as King of the Court or Around the World. Timers would also be set to rotate people in and out so that everyone can play. Paddles/Balls are supplied by the club, but feel free to bring your own equipment! Sometimes, practices will be more competitive and focused on higher levels of play if the level of interest is there. If you have any questions, go on the discord and ask:&nbsp;https://discord.gg/adEQyyaudE</p>",
+      "location": "MAC Courts in Campus Rec",
+      "startsOn": "2025-11-07T18:00:00+00:00",
+      "endsOn": "2025-11-07T19:30:00+00:00",
+      "imagePath": "d7f0e449-1729-4aaf-9b6c-e59a8ff26737983287b2-1bd0-41dd-9438-4ca12f30cd6e.png",
+      "theme": "Athletics",
+      "categoryIds": [],
+      "categoryNames": [],
+      "benefitNames": [],
+      "visibility": "Public",
+      "status": "Approved",
+      "latitude": null,
+      "longitude": null,
+      "recScore": null,
+      "rsvpTotal": 0,
+      "@search.score": 99.92882
+    },
+    {
+      "id": "11640999",
+      "institutionId": 126,
+      "organizationId": 94329,
+      "organizationIds": [],
+      "branchId": 65738,
+      "branchIds": [],
+      "organizationName": "Center for Prevention and Outreach",
+      "organizationProfilePicture": "9ff07663-f1d0-476e-8da4-68b07f5adef0916cf862-99b9-4cca-9d2a-80f28635100d.png",
+      "organizationNames": [],
+      "name": "Mindful Moments",
+      "description": "<p><span style=\"font-weight: 400;\">Research shows that people who practice mindfulness are happier, more motivated, more successful in relationships, have improved physical health, and experience less anxiety and depression. Students can explore different ways to relax the body &amp; calm the mind through peer led guided mindfulness activities.</span></p>\r\n<p><span style=\"font-weight: 400;\">Join CPO Peer Educators to explore different ways to relax the body and calm the mind!</span></p>\r\n<p><span style=\"font-weight: 400;\">Email prevention_outreach@stonybrook.edu for accessibility needs</span></p>\r\n<p><span style=\"font-weight: 400;\">Description for Peer Educator Sessions: (depends on activity of Mindful Moments for peer educators)</span></p>",
+      "location": "Center for Prevention and Outreach, Student Union Room 108",
+      "startsOn": "2025-11-07T18:00:00+00:00",
+      "endsOn": "2025-11-07T19:00:00+00:00",
+      "imagePath": "0db9b11b-5648-4be7-8865-de707a71a9dcf4747b93-9bda-495a-a6ac-5b48fe61b0f2.png",
+      "theme": "ThoughtfulLearning",
+      "categoryIds": [
+        "11182"
+      ],
+      "categoryNames": [
+        "Health & Wellness"
+      ],
+      "benefitNames": [
+        "Free Stuff"
+      ],
+      "visibility": "Public",
+      "status": "Approved",
+      "latitude": null,
+      "longitude": null,
+      "recScore": null,
+      "rsvpTotal": 0,
+      "@search.score": 99.92882
+    },
+    {
+      "id": "11537854",
+      "institutionId": 126,
+      "organizationId": 66452,
+      "organizationIds": [],
+      "branchId": 65738,
+      "branchIds": [],
+      "organizationName": "Table Tennis Club",
+      "organizationProfilePicture": "766afc96-f3f4-4514-85d6-1b767773e899846814a7-d55c-4f2d-9a79-04ed331e650b.jpeg",
+      "organizationNames": [],
+      "name": "Table Tennis/ Ping Pong Practice ",
+      "description": "<p>4 meetings per week of general ping pong practices. All skill levels welcome. The tables will be set up for free play but if there are too many people, a couple of tables will be set as King of the Court or Around the World. Timers would also be set to rotate people in and out so that everyone can play. Paddles/Balls are supplied by the club, but feel free to bring your own equipment! Sometimes, practices will be more competitive and focused on higher levels of play if the level of interest is there. If you have any questions, go on the discord and ask:</p>",
+      "location": "MAC Courts in Campus Rec Center",
+      "startsOn": "2025-11-07T18:00:00+00:00",
+      "endsOn": "2025-11-07T19:30:00+00:00",
+      "imagePath": null,
+      "theme": "Athletics",
+      "categoryIds": [],
+      "categoryNames": [],
+      "benefitNames": [],
+      "visibility": "Public",
+      "status": "Approved",
+      "latitude": null,
+      "longitude": null,
+      "recScore": null,
+      "rsvpTotal": 0,
+      "@search.score": 99.92882
+    },
+    {
+      "id": "11771362",
+      "institutionId": 126,
+      "organizationId": 66465,
+      "organizationIds": [],
+      "branchId": 65738,
+      "branchIds": [],
+      "organizationName": "Chabad Student Club",
+      "organizationProfilePicture": "089a7673-b7aa-4d59-a9cc-d3724615fe4f0ebabf5d-2233-4267-8955-1cf2af5c55d9.jpg",
+      "organizationNames": [],
+      "name": "Pegisha International Chabad Club Conference",
+      "description": "<p>Join us at the annual Pegisha Chabad Club Conference with over 1000 other college students! We will be learning how to become better leaders and how we can better inspire those around us.&nbsp;</p>",
+      "location": "Chabad Lubavitch World Headquarters",
+      "startsOn": "2025-11-07T18:00:00+00:00",
+      "endsOn": "2025-11-09T04:30:00+00:00",
+      "imagePath": "2cb055dc-e27c-43b1-969f-f723ef540d931b7e0e41-a59f-48be-97b9-3e048de68e10.png",
+      "theme": "ThoughtfulLearning",
+      "categoryIds": [
+        "2759",
+        "13468",
+        "13472",
+        "17711"
+      ],
+      "categoryNames": [
+        "Religious Service / Celebration",
+        "Community Service",
+        "Professional development/Leadership",
+        "Social Action"
+      ],
+      "benefitNames": [],
+      "visibility": "Public",
+      "status": "Approved",
+      "latitude": null,
+      "longitude": null,
+      "recScore": null,
+      "rsvpTotal": 0,
+      "@search.score": 99.92882
+    },
+    {
+      "id": "11780833",
+      "institutionId": 126,
+      "organizationId": 412272,
+      "organizationIds": [],
+      "branchId": 65738,
+      "branchIds": [],
+      "organizationName": "DnD and More Club!",
+      "organizationProfilePicture": null,
+      "organizationNames": [],
+      "name": "DnD and More! campaign meeting",
+      "description": "<p>Join DnD and More! for a space to participate in Dungeons and Dragons campaigns with your fellow party members.</p>",
+      "location": "Earth and Space Sciences Building room 131",
+      "startsOn": "2025-11-07T19:00:00+00:00",
+      "endsOn": "2025-11-07T22:00:00+00:00",
+      "imagePath": null,
+      "theme": "Social",
+      "categoryIds": [],
+      "categoryNames": [],
+      "benefitNames": [],
+      "visibility": "Public",
+      "status": "Approved",
+      "latitude": "40.914830",
+      "longitude": "-73.125680",
+      "recScore": null,
+      "rsvpTotal": 1,
+      "@search.score": 99.92439
+    },
+    {
+      "id": "11497603",
+      "institutionId": 126,
+      "organizationId": 66470,
+      "organizationIds": [],
+      "branchId": 65738,
+      "branchIds": [],
+      "organizationName": "Badminton Club",
+      "organizationProfilePicture": "b005df12-b458-4827-8f32-78fe09ea47c5d7c337d2-831a-42a2-ba3b-4434ae1989f0.png",
+      "organizationNames": [],
+      "name": "Badminton Club Weekly Meeting",
+      "description": "<p>All skill levels are welcome to join! Come and play with other members or to learn new skills.&nbsp;</p>\r\n<p>Rackets will be available to borrow (We recommend you bring your own if you have). Birdies will be provided.</p>\r\n<p>&nbsp;</p>\r\n<p>Location: MAC Courts (Basement of the Recreation Center)</p>\r\n<p>Every Wednesday 1:30 - 3:00 PM and Friday 2:30 - 4:00 PM</p>\r\n<p>&nbsp;</p>\r\n<p>Don&rsquo;t forget to have:</p>\r\n<p>- CORQ App ready</p>\r\n<p>- Water</p>\r\n<p>- Comfortable / Athletic wear and shoes (No jeans please!)</p>",
+      "location": "MAC Courts",
+      "startsOn": "2025-11-07T19:30:00+00:00",
+      "endsOn": "2025-11-07T21:00:00+00:00",
+      "imagePath": null,
+      "theme": "Athletics",
+      "categoryIds": [],
+      "categoryNames": [],
+      "benefitNames": [],
+      "visibility": "Public",
+      "status": "Approved",
+      "latitude": null,
+      "longitude": null,
+      "recScore": null,
+      "rsvpTotal": 2,
+      "@search.score": 99.92218
+    },
+    {
+      "id": "11596014",
+      "institutionId": 126,
+      "organizationId": 90595,
+      "organizationIds": [],
+      "branchId": 65738,
+      "branchIds": [],
+      "organizationName": "Women's Club Basketball",
+      "organizationProfilePicture": "d40e48cc-3d04-4165-abbf-083157d11e62e3a11a7c-620e-4aae-ad00-ac6beb3b2ab4.jpeg",
+      "organizationNames": [],
+      "name": "Fall '25 WCB Open Practice",
+      "description": "<p>This is one of our three weekly club practices, where we will run through drills, work on playmaking, and scrimmage against each other. Our practices are open to new and returning members, with ANY skill level!</p>",
+      "location": "Walter J. Hawry's Campus Recreation Center",
+      "startsOn": "2025-11-07T20:00:00+00:00",
+      "endsOn": "2025-11-07T21:00:00+00:00",
+      "imagePath": "ba4a7a0c-b145-47c3-bbc5-f59928dbb7d180606ccd-1efd-4478-a7bd-053b2bde3e87.png",
+      "theme": "Athletics",
+      "categoryIds": [
+        "2761",
+        "11182"
+      ],
+      "categoryNames": [
+        "Sporting/Athletic Program",
+        "Health & Wellness"
+      ],
+      "benefitNames": [],
+      "visibility": "Public",
+      "status": "Canceled",
+      "latitude": null,
+      "longitude": null,
+      "recScore": null,
+      "rsvpTotal": 0,
+      "@search.score": 99.91997
+    },
+    {
+      "id": "11853554",
+      "institutionId": 126,
+      "organizationId": 71377,
+      "organizationIds": [],
+      "branchId": 65738,
+      "branchIds": [],
+      "organizationName": "Running Club at Stony Brook University",
+      "organizationProfilePicture": "20633d99-1685-4388-a8ee-02c34d7b363ec50f5134-8906-43a4-9e5b-c25edde4642c.png",
+      "organizationNames": [],
+      "name": "Stony Brook Running Club Practice",
+      "description": "<p class=\"x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_bold-redtitle\">Practice is Monday-Friday @ 3:00 pm at the University Track.</p>\r\n<p class=\"x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_bold-redtitle\">The purpose of the running club is to unite runners of all abilities for the common goal of bettering their individual fitness. Accommodations will be made for everyone in the Stony Brook campus community. This club will be held five days per week, but people may come when they can since schedules vary. In addition to weekday practices, we will attend meets on various weekends throughout the semester, which are completely optional. This group will be good for people looking to meet new friends, stay in shape, have a healthier lifestyle, as well as compete in a setting that is more relaxed than a Division 1 sports team. Overall, the goal is for everyone to try their best and have fun.</p>\r\n<p class=\"x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_bold-redtitle\">Search for our club on Discord, Facebook, Instagram, and Strava to get connected virtually!</p>\r\n<p class=\"x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_bold-redtitle\">Linktree:&nbsp;<a href=\"https://linktr.ee/sburunningclub\">https://linktr.ee/sburunningclub</a></p>",
+      "location": "next to the track",
+      "startsOn": "2025-11-07T20:00:00+00:00",
+      "endsOn": "2025-11-07T21:00:00+00:00",
+      "imagePath": "e9e03c58-3d6a-4c8d-8a18-d7be821231accb551c33-c0ec-4369-9adb-5aaa1b098fbf.png",
+      "theme": "Athletics",
+      "categoryIds": [],
+      "categoryNames": [],
+      "benefitNames": [],
+      "visibility": "Public",
+      "status": "Approved",
+      "latitude": null,
+      "longitude": null,
+      "recScore": null,
+      "rsvpTotal": 0,
+      "@search.score": 99.91997
+    },
+    {
+      "id": "11684325",
+      "institutionId": 126,
+      "organizationId": 66050,
+      "organizationIds": [],
+      "branchId": 65738,
+      "branchIds": [],
+      "organizationName": "Black Student Union",
+      "organizationProfilePicture": "48da678d-2165-45d4-998f-9c7629342ebd41da43fc-0d0d-43cd-8da2-f1d9e85c2843.PNG",
+      "organizationNames": [],
+      "name": "Fashion Show Rehearsals ",
+      "description": "<p>Rehearsing for the upcoming fashion show.</p>",
+      "location": "ROTH 122",
+      "startsOn": "2025-11-07T20:00:00+00:00",
+      "endsOn": "2025-11-07T23:00:00+00:00",
+      "imagePath": null,
+      "theme": "Cultural",
+      "categoryIds": [],
+      "categoryNames": [],
+      "benefitNames": [],
+      "visibility": "Public",
+      "status": "Canceled",
+      "latitude": null,
+      "longitude": null,
+      "recScore": null,
+      "rsvpTotal": 0,
+      "@search.score": 99.91997
+    }
+  ]
+}
