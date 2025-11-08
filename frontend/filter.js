@@ -66,8 +66,8 @@ function getSelectedTimes() {
     const time = cell.getAttribute('data-time');
     return { day, time };
   }).filter(t => t.day && t.time).sort((a, b) => {
-    const aKey = `${a.day}T${a.time}`;
-    const bKey = `${b.day}T${b.time}`;
+    const aKey = `${a.day}${a.time}`;
+    const bKey = `${b.day}${b.time}`;
     return aKey.localeCompare(bKey);
   });
 
@@ -106,7 +106,7 @@ function getSelectedTimes() {
     const format = (d, t) => {
       const [year, month, day] = d.split('-');
       const [hour, minute] = t.split(':');
-      return `${year}${month}${day}T${hour}${minute}`;
+      return `${year}${month}${day}${hour}${minute}`; // no "T"
     };
     return {
       from: format(start.day, start.time),
@@ -120,6 +120,43 @@ function getSelectedTimes() {
 // Save button logic
 document.getElementById('save-button').addEventListener('click', () => {
   const selectedTimes = getSelectedTimes();
-  console.log("User's availability:", selectedTimes);
+  localStorage.setItem('userAvailability', JSON.stringify(selectedTimes));
+  console.log("Saved availability:", selectedTimes);
   alert("Your availability has been saved!");
 });
+
+// Restore saved availability
+function restoreAvailability() {
+  const saved = localStorage.getItem('userAvailability');
+  if (!saved) return;
+
+  const availability = JSON.parse(saved);
+  availability.forEach(({ from, to }) => {
+    const day = from.slice(0, 4) + '-' + from.slice(4, 6) + '-' + from.slice(6, 8);
+    const startHour = parseInt(from.slice(8, 10));
+    const startMinute = parseInt(from.slice(10, 12));
+    const endHour = parseInt(to.slice(8, 10));
+    const endMinute = parseInt(to.slice(10, 12));
+
+    let currentHour = startHour;
+    let currentMinute = startMinute;
+
+    while (
+      currentHour < endHour ||
+      (currentHour === endHour && currentMinute < endMinute)
+    ) {
+      const timeStr = `${String(currentHour).padStart(2, '0')}:${String(currentMinute).padStart(2, '0')}`;
+      const selector = `.cell[data-day="${day}"][data-time="${timeStr}"]`;
+      const cell = document.querySelector(selector);
+      if (cell) cell.classList.add('selected');
+
+      currentMinute += 15;
+      if (currentMinute >= 60) {
+        currentMinute = 0;
+        currentHour += 1;
+      }
+    }
+  });
+}
+
+restoreAvailability();
