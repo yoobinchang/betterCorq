@@ -76,7 +76,7 @@
   background-color: var(--white);
 }
 .left-content {
-  margin-top: 15vh; /* current value */
+  margin-top: 30vh; /* current value */
   margin-left: 3vh;
   width: 55vw;
   padding-top: 50px; /* adds extra space inside the container */
