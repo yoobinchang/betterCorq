@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BetterCorq</title>
+  <link rel="stylesheet" href="filter.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+   <div class="nav-bar-container">
+    <div class="block1"></div>
+    <div class="nav-bar">
+        <a href="home.html" class="nav-link">Home</a>
+        <a href="events.html" class="nav-link">Events</a>
+        <a href="filter.html" class="nav-link"><u>Filter</u></a>
+        <a href="profile.html" class="nav-link">Profile</a>
+    </div>
+  </div>
+
+<!-- Calendar Intro Text -->
+<div class="calendar-intro">
+  <h3>Select Your Free Time</h3>
+  <p>Click and drag across the calendar to highlight when you're free. We'll match you with events that fit your schedule!</p>
+</div>
+
+
+<!-- Main Content -->
+<div class="calendar-container">
+  <div class="calendar-header">
+    <div class="time-label"></div>
+    <div class="day-header">Mon</div>
+    <div class="day-header">Tue</div>
+    <div class="day-header">Wed</div>
+    <div class="day-header">Thu</div>
+    <div class="day-header">Fri</div>
+    <div class="day-header">Sat</div>
+    <div class="day-header">Sun</div>
+  </div>
+  <div class="calendar-body" id="schedule"></div>
+</div>
+
+<div class="button-container">
+  <button id="save-button">Save</button>
+</div>
+
+  
+<script src="filter.js"></script>
+
+
+
+    <!-- Footer -->
+     <div class="footer">
+      <p>&copy; Demo website made for SBUHacks! Please contacts jillian.calub@stonybrook.edu, katy.ng@stonybrook.edu, yoobin.chang@stonybrook.edu, renee.siu@stonybrook.edu for more information</p>
+    </div>
+
+</body>
+</html>
