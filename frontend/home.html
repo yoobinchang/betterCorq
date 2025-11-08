@@ -3,32 +3,87 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Styled Website</title>
+  <title>BetterCorq</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <!-- Navigation Bar -->
-  <div id="nav-bar">
-    <a href="#" class="nav-link">Home</a>
-    <a href="events.html" class="nav-link">Events</a>
-    <a href="filter.html" class="nav-link">Filter</a>
-    <a href="profile.html" class="nav-link">Profile</a>
+   <div class="nav-bar-container">
+    <div class="block1"></div>
+    <div class="nav-bar">
+        <a href="#" class="nav-link">Home</a>
+        <a href="events.html" class="nav-link">Events</a>
+        <a href="filter.html" class="nav-link">Filter</a>
+        <a href="profile.html" class="nav-link">Profile</a>
+    </div>
   </div>
 
   <!-- Main Content -->
   <div class="content-container">
     <div class="left-content">
-      <h3>Welcome to the home page!</h3>
-      <p>hello there bitch.</p>
-      <a href="#">(coming soon)</a>
+      <h3>Corq sucks.</h3>
+      <h3>So we made <i>BetterCorq</i>.</h3>
+      <p>Login and upload your schedule to find  events on campus that align with <a>YOUR</a> schedule.</p>
+        <div class="button-container">
+            <button onclick="window.location.href='login.html'">LOGIN</button>
+            <button onclick="window.location.href='signup.html'">SIGNUP</button>
+        </div>
     </div>
 
     <div class="right-content">
       <img src="https://news.stonybrook.edu/wp-content/uploads/2018/07/Wolfie-Feature.jpg" alt="Profile" />
     </div>
   </div>
+
+  <!-- instructions -->
+    <div class="instructions-container">
+    <div class="instructions-left-content fade-in">
+        <img src="./schedule.png" alt="Schedule" />
+        <img src="./events.png" alt="Events" />
+        <img src="./modified_schedule.png" alt="Match" />
+    </div>
+
+    <div class="instructions-right-content fade-in">
+        <div class="text">
+        <h3>Log in and upload a picture of your schedule from SOLAR or Schedule Builder</h3>
+        <h3>The next page will display all events that fit into your free time. Select which events you’re interested in.</h3>
+        <h3>Generate multiple versions of your schedule with the events you selected.</h3>
+        </div>
+    </div>
+
+    <div class="steps-container fade-in">
+        <div class="circle">1</div>
+        <div class="circle">2</div>
+        <div class="circle">3</div>
+    </div>
+    </div>
+
+
+   <!--Fade-in Animation Script -->  
+   <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // Optional: only animate once
+            }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+    <!-- Footer -->
+     <div class="footer">
+      <p>&copy; Demo website made for SBUHacks! Please contacts jillian.calub@stonybrook.edu, katy.ng@stonybrook.edu, yoobin.chang@stonybrook.edu, renee.siu@stonybrook.edu for more information</p>
+    </div>
+
 
 </body>
 </html>
