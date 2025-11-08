@@ -46,3 +46,31 @@ for (let i = 32; i < intervalCount; i++) {
     schedule.appendChild(cell);
   }
 }
+
+function getSelectedTimes() {
+  const selectedCells = document.querySelectorAll('.cell.selected');
+  const times = [];
+
+  selectedCells.forEach(cell => {
+    const day = cell.getAttribute('data-day');
+    const time = cell.getAttribute('data-time');
+    times.push({ day, time });
+  });
+
+  return times;
+}
+
+document.getElementById('save-button').addEventListener('click', () => {
+  const selectedTimes = getSelectedTimes();
+
+  // For now, just log it
+  console.log("User's availability:", selectedTimes);
+
+  // You could also send it to a server later:
+  // fetch('/saveAvailability', {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify(selectedTimes)
+  // });
+});
+

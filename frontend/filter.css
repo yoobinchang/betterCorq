@@ -120,6 +120,32 @@
   background-color: var(--red);
 }
 
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 2.5vw;
+  margin-top: 20px;
+  margin-left: 1vw;
+  margin-bottom: 5vh;
+}
+
+.button-container button {
+  width: 15vw;
+  padding: 15px 30px;
+  background-color: var(--white);
+  color: var(--red);
+  border: 5px solid var(--red);
+  font-size: 1.5vw;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.button-container button:hover {
+  background-color: var(--red);
+  color: var(--white);
+}
+
+
 
 .footer {
   background-color: var(--red);
