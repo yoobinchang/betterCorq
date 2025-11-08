@@ -176,3 +176,10 @@ function restoreAvailability() {
 }
 
 restoreAvailability();
+
+// Clear button logic
+document.getElementById("clear-button").addEventListener("click", () => {
+  const selectedCells = document.querySelectorAll(".cell.selected");
+  selectedCells.forEach(cell => cell.classList.remove("selected"));
+});
+

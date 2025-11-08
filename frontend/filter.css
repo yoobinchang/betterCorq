@@ -6,6 +6,13 @@
   --white: #f2eeee;
   --black: #181818;
 }
+body {
+  background-color: var(--white);
+}
+.cell {
+  background-color: rgb(250, 250, 250);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -92,6 +99,13 @@
 .upload-label:hover {
   background-color: var(--red);   /* optional hover effect */
   color: var(--white);            /* optional hover effect */
+}
+
+.day-header {
+  border-left: 1px solid #ccc;
+  padding: 5px 0;
+  background-color: var(--red);   /* red background */
+  color: var(--white);            /* white text for contrast */
 }
 
 
