@@ -1,14 +1,31 @@
 :root {
   --nav-bar: #eeeee;
-  --red: rgb(213,32,39);
-  --white: rgb(255, 255, 255);
+  --red: #bf1922;
+  --med-red: #6b000d;
+  --dark-red: #7c0808;
+  --white: #f2eeee;
 }
 * {
   margin: 0;
   padding: 0;
   font-family: "Alumni Sans", sans-serif;
 }
-#nav-bar {
+.nav-bar-container {
+    display: flex;
+    gap: 0vw;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 7vw;
+}
+.block1 {
+  height: 7vw;
+  width: 40vw;
+  background-color: var(--dark-red);
+}
+
+.nav-bar {
+  width: 60vw;
   background-color: var(--red);
   display: flex;
   height: 7vw;
@@ -26,38 +43,153 @@
   color: var(--white);
   text-decoration: none;
 }
+.nav-link:hover {
+  color: var(--med-red);
+}
 .content-container {
   display: flex;
-  height: 30vh;
-  gap: 40px;
+  height: 85vh;
+  gap: 5vw;
   justify-content: center;
   align-items: center;
   background-color: var(--white);
 }
 .left-content {
-    margin-top: 200px;
-  margin-left: 1vw;
-  width: 55vw;
+  margin-top: 10vh;
+  margin-left: 5vw;
+  width: 45vw;
 }
 .left-content h3 {
-  font-size: 60px;
-  margin-bottom: 20px;
+  color: var(--dark-red);
+  font-size: 5vw;
+  margin-bottom: 0px;
 }
-.left-content h3 i {
-  color: var(--pink);
-}
-.left-content p {
-  font-size: 22px;
+.left-content i {
+    font-style: italic;
 }
 .left-content a {
-  text-decoration: line-through;
+    color: var(--dark-red);
+}
+.left-content p {
+  font-size: 3vw;
+}
+
+.button-container {
+  display: flex;               /* side by side */
+  justify-content: left;     /* center horizontally */
+  gap: 2.5vw;                   /* spacing between buttons */
+  margin-top: 20px;            /* spacing from text above */
+  margin-left: 1vw;
+}
+
+.button-container button {
+  width: 15vw;
+  padding: 15px 30px;
+  background-color: var(--white);
+  color: var(--red);
+  border: 5px solid var(--red);
+  font-size: 1.5vw;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.button-container button:hover {
+  background-color: var(--red);   /* optional hover effect */
+  color: var(--white);            /* optional hover effect */
 }
 .right-content img {
-  width: 500px;          /* set width */
-  height: 500px;         /* set same height → square */
+  width: 60vh;          /* set width */
+  height: 60vh;         /* set same height → square */
   object-fit: cover;     /* crop it visually instead of stretching */
   object-position: 40% 50%; /* default: center center */
   border-radius: 50%;
-  margin-top: 300px;
+  margin-top: 10vh;
   border: 10px solid var(--red); /*change to dark red */
+}
+
+
+/* instructions */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.instructions-container {
+  display: flex;
+  height: 250vh;
+  gap: 2vw;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--white);
+}
+.instructions-left-content {
+  margin-top: 10vh;
+  margin-left: 5vw;
+}
+
+.instructions-left-content img {
+  width: 100vh;          /* set width */
+  transform: scale(1);  /* 50% of original size */
+  border: 10px solid var(--red); /*change to dark red */
+  margin-bottom: 5vh;
+  margin-right: 3vw;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;   /* stack vertically */
+  justify-content: space-around;
+  align-items: center;      /* centers the text horizontally */
+  height: 200vh;             /* controls spacing between items */
+  text-align: right;       /* centers text inside each h3 */
+}
+
+.text h3 {
+  color: var(--dark-red);
+  font-size: 3vw;
+  margin: 0; /* remove extra spacing */
+}
+
+/* Container to position circles on the right */
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height:150vh; /* or whatever height you want */
+  gap: 1vw; /* space between circles */
+  margin: 0vw;
+  margin-right:5vw;
+}
+
+/* Each circle */
+.circle {
+  width: 60px;
+  height: 60px;
+  background-color: var(--red);
+  color: var(--white);
+  border-radius: 50%; /* makes it a perfect circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  border: 4px solid var(--dark-red);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.footer {
+  background-color: var(--red);
+  color: var(--white);
+  text-align: center;
+  padding: 20px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }
