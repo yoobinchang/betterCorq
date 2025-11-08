@@ -1,5 +1,5 @@
 # load event data, matching algorithm that suggests events based on user's free time
-import json
+import json, os
 from datetime import datetime
 from utils.time_utils import calculate_free_time, is_within_tolerance
 
@@ -8,8 +8,14 @@ SCHEDULE_PATH = "backend/data/schedule.json"
 
 def load_events():
     """Load all campus events"""
-    with open(EVENTS_PATH, "r") as f:
+    if not os.path.exists(EVENTS_PATH):
+        return []
+    with open(EVENTS_PATH, "r", encoding="utf-8") as f:
         return json.load(f)
+    
+def get_all_events():
+    """Return all events from the dataset"""
+    return load_events()
 
 
 def recommend_events(events, schedule_data, selected_days, tolerance):

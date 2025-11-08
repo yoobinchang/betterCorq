@@ -1,7 +1,8 @@
-# extract busy time & free time data by analyzing schedule image with Gemini API
+# backend/services/ai_service.py
 import base64
 import requests
 import os
+import json
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -9,46 +10,103 @@ load_dotenv()
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 
 def extract_schedule_from_image(file):
-    """
-    Sends schedule image to OpenRouter (Gemini Vision or Llama 3.2 Vision)
-    and parses AI response into structured JSON.
-    """
+    """Send a schedule image to OpenRouter (Gemini/Llama) and get structured time data."""
+    print("📤 [AI Service] Starting image extraction process...")
 
-    # Convert uploaded file → base64 string
+    # === Convert to base64 ===
     img_bytes = file.read()
     img_base64 = base64.b64encode(img_bytes).decode("utf-8")
 
-    # Define API request payload
     headers = {
         "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "HTTP-Referer": "https://github.com/yoobinchang/betterCorq",
+        "User-Agent": "betterCorq/1.0 (https://github.com/yoobinchang)",
+        "X-Title": "betterCorq AI Schedule Extractor"
     }
 
     payload = {
-        "model": "google/gemini-2.5-pro",  # or "meta-llama/llama-3.2-90b-vision-instruct"
-        "input": [
+        "model": "gpt-4o",
+        "messages": [
             {
                 "role": "user",
                 "content": [
-                    {"type": "text", "text": "Extract all class names, start/end times, and days from this schedule image in JSON format. Use 24-hour time."},
+                    {
+                        "type": "text",
+                        "text": (
+                            "You are analyzing a weekly university schedule image. "
+                            "Each green or colored block in the table represents one class (a busy period). "
+                            "Your task is to extract only the busy times from each block.\n\n"
+                            "INSTRUCTIONS:\n"
+                            "1. For every visible class block, read the start and end time written inside it (e.g., '9:30AM - 10:50AM').\n"
+                            "2. Identify which weekday column the block belongs to (Mon, Tue, Wed, Thu, or Fri).\n"
+                            "3. Convert all 12-hour times with AM/PM into 24-hour format (HH:MM). Examples:\n"
+                            "   - 9:30AM → 09:30\n"
+                            "   - 10:50AM → 10:50\n"
+                            "   - 3:30PM → 15:30\n"
+                            "   - 4:50PM → 16:50\n"
+                            "4. Output ONLY valid JSON, structured exactly like this:\n"
+                            "{\n"
+                            "  'Mon': [['09:30','10:50'], ['14:00','14:55']],\n"
+                            "  'Tue': [['12:30','13:45']],\n"
+                            "  'Wed': [],\n"
+                            "  'Thu': [['09:30','10:50']],\n"
+                            "  'Fri': []\n"
+                            "}\n\n"
+                            "RULES:\n"
+                            "- Every block represents a busy time (class period). Collect all of them.\n"
+                            "- Do NOT include text like course names or rooms, only time ranges.\n"
+                            "- Do NOT guess; if a time is unreadable, skip that block.\n"
+                            "- Ensure the output is strictly valid JSON and uses 24-hour time.\n"
+                        )
+                    },
                     {"type": "image", "image_base64": img_base64}
                 ]
             }
         ]
     }
 
-    response = requests.post("https://openrouter.ai/api/v1/chat/completions",
-                             headers=headers, json=payload)
+    print("🚀 Sending request to OpenRouter API...")
 
-    if response.status_code != 200:
-        raise Exception(f"API error: {response.text}")
+    response = requests.post(
+        "https://openrouter.ai/api/v1/chat/completions",
+        headers=headers,
+        json=payload,
+        timeout=60
+    )
 
-    # Parse model response
-    data = response.json()
+    print(f"🔁 API responded with status {response.status_code}")
+
+    # If server sent HTML instead of JSON, detect & print short preview
+    if response.headers.get("Content-Type", "").startswith("text/html"):
+        print("❌ OpenRouter returned HTML page (likely firewall block):")
+        print(response.text[:300])
+        raise Exception("403 HTML response: Firewall or Referer/User-Agent missing")
+
+    # Otherwise, try to parse JSON
+    try:
+        data = response.json()
+    except Exception:
+        raise Exception(f"❌ Non-JSON response: {response.text[:300]}")
+
+    if "error" in data:
+        raise Exception(f"OpenRouter Error: {json.dumps(data['error'], indent=2)}")
+
     ai_text = data["choices"][0]["message"]["content"]
 
-    # Save schedule to file
-    with open("backend/data/schedule.json", "w") as f:
-        f.write(ai_text)
+    # Clean up JSON if wrapped in markdown
+    if "```" in ai_text:
+        ai_text = ai_text.split("```json")[-1].split("```")[0].strip()
 
-    return ai_text
+    # Save result
+    save_path = "backend/data/schedule.json"
+    try:
+        parsed = json.loads(ai_text)
+        with open(save_path, "w", encoding="utf-8") as f:
+            json.dump(parsed, f, indent=2)
+        print(f"💾 Saved schedule JSON → {save_path}")
+        return parsed
+    except json.JSONDecodeError:
+        with open(save_path, "w", encoding="utf-8") as f:
+            f.write(ai_text)
+        raise Exception("AI response not valid JSON; saved raw text instead.")
