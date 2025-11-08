@@ -1,348 +1,5 @@
 [
   {
-    "name": "Pre-College Day ",
-    "start": "2025-11-07 09:00 AM EST",
-    "end": "01:00 PM EST",
-    "location": "SAC Ballroom B",
-    "organization": "Society of Hispanic Professional Engineers"
-  },
-  {
-    "name": "Hands Only CPR Training: *First Generation Week Special*",
-    "start": "2025-11-07 11:00 AM EST",
-    "end": "12:00 PM EST",
-    "location": "Union 108",
-    "organization": "Center for Prevention and Outreach"
-  },
-  {
-    "name": "Pop Up Thrift Store",
-    "start": "2025-11-07 12:00 PM EST",
-    "end": "04:00 PM EST",
-    "location": "SAC Loft",
-    "organization": "Skincare and Wellness Club"
-  },
-  {
-    "name": "Coping & Connection Survivor Support Space",
-    "start": "2025-11-07 12:00 PM EST",
-    "end": "01:00 PM EST",
-    "location": "CPO (Union 108)",
-    "organization": "Center for Prevention and Outreach"
-  },
-  {
-    "name": "Department of Political Science & the Career Center Present the Pre-Law Workshop for Political Science Students",
-    "start": "2025-11-07 12:00 PM EST",
-    "end": "01:00 PM EST",
-    "location": "Online",
-    "organization": "Department of Political Science"
-  },
-  {
-    "name": "NSBE | Study Circuit",
-    "start": "2025-11-07 12:30 PM EST",
-    "end": "01:20 PM EST",
-    "location": "FREY 102",
-    "organization": "National Society of Black Engineers"
-  },
-  {
-    "name": "Archery Outdoor Practice",
-    "start": "2025-11-07 01:00 PM EST",
-    "end": "05:00 PM EST",
-    "location": "Campus Recreation Outdoor South Field Complex - Field C (Grass)",
-    "organization": "Company of Archers"
-  },
-  {
-    "name": "Jummah Prayer",
-    "start": "2025-11-07 01:00 PM EST",
-    "end": "02:00 PM EST",
-    "location": "Stony Brook Union Ballroom",
-    "organization": "Muslim Students’ Association"
-  },
-  {
-    "name": "Table Tennis Ping Pong Practice Meeting",
-    "start": "2025-11-07 01:00 PM EST",
-    "end": "02:30 PM EST",
-    "location": "MAC Courts in Campus Rec",
-    "organization": "Table Tennis Club"
-  },
-  {
-    "name": "Mindful Moments",
-    "start": "2025-11-07 01:00 PM EST",
-    "end": "02:00 PM EST",
-    "location": "Center for Prevention and Outreach, Student Union Room 108",
-    "organization": "Center for Prevention and Outreach"
-  },
-  {
-    "name": "Table Tennis/ Ping Pong Practice ",
-    "start": "2025-11-07 01:00 PM EST",
-    "end": "02:30 PM EST",
-    "location": "MAC Courts in Campus Rec Center",
-    "organization": "Table Tennis Club"
-  },
-  {
-    "name": "Pegisha International Chabad Club Conference",
-    "start": "2025-11-07 01:00 PM EST",
-    "end": "11:30 PM EST",
-    "location": "Chabad Lubavitch World Headquarters",
-    "organization": "Chabad Student Club"
-  },
-  {
-    "name": "DnD and More! campaign meeting",
-    "start": "2025-11-07 02:00 PM EST",
-    "end": "05:00 PM EST",
-    "location": "Earth and Space Sciences Building room 131",
-    "organization": "DnD and More Club!"
-  },
-  {
-    "name": "Badminton Club Weekly Meeting",
-    "start": "2025-11-07 02:30 PM EST",
-    "end": "04:00 PM EST",
-    "location": "MAC Courts",
-    "organization": "Badminton Club"
-  },
-  {
-    "name": "Fall '25 WCB Open Practice",
-    "start": "2025-11-07 03:00 PM EST",
-    "end": "04:00 PM EST",
-    "location": "Walter J. Hawry's Campus Recreation Center",
-    "organization": "Women's Club Basketball"
-  },
-  {
-    "name": "Stony Brook Running Club Practice",
-    "start": "2025-11-07 03:00 PM EST",
-    "end": "04:00 PM EST",
-    "location": "next to the track",
-    "organization": "Running Club at Stony Brook University"
-  },
-  {
-    "name": "Fashion Show Rehearsals ",
-    "start": "2025-11-07 03:00 PM EST",
-    "end": "06:00 PM EST",
-    "location": "ROTH 122",
-    "organization": "Black Student Union"
-  },
-  {
-    "name": "Cybersecurity Club Hacker Hours",
-    "start": "2025-11-07 03:00 PM EST",
-    "end": "05:00 PM EST",
-    "location": "SAC 306",
-    "organization": "Cybersecurity Club"
-  },
-  {
-    "name": "NIRCA XC Nationals ",
-    "start": "2025-11-07 04:00 PM EST",
-    "end": "05:00 PM EST",
-    "location": "Hershey Parkview Cross Country Course",
-    "organization": "Running Club at Stony Brook University"
-  },
-  {
-    "name": "NOSS Tech Rehearsal",
-    "start": "2025-11-07 04:00 PM EST",
-    "end": "09:30 PM EST",
-    "location": "Tabler 110",
-    "organization": "Actors Conservatory"
-  },
-  {
-    "name": "Railway Roundabout",
-    "start": "2025-11-07 04:00 PM EST",
-    "end": "06:30 PM EST",
-    "location": "Melville E4310",
-    "organization": "The Model Railway Society"
-  },
-  {
-    "name": "Mindful Moments",
-    "start": "2025-11-07 05:00 PM EST",
-    "end": "06:00 PM EST",
-    "location": "Center for Prevention and Outreach, Student Union Room 108",
-    "organization": "Center for Prevention and Outreach"
-  },
-  {
-    "name": "The Community Garden GBM 10",
-    "start": "2025-11-07 05:00 PM EST",
-    "end": "06:00 PM EST",
-    "location": "SAC GARDEN",
-    "organization": "The Community Garden"
-  },
-  {
-    "name": "Are You Smarter Than a Fifth Grader? : Civic Engagement Edition",
-    "start": "2025-11-07 05:00 PM EST",
-    "end": "06:00 PM EST",
-    "location": "Toscanini Classroom",
-    "organization": "Tabler Community"
-  },
-  {
-    "name": "Stony Brook Women's Volleyball vs. North Carolina A&T",
-    "start": "2025-11-07 05:00 PM EST",
-    "end": "07:00 PM EST",
-    "location": "Pritchard Gymnasium",
-    "organization": "Stony Brook Athletics"
-  },
-  {
-    "name": "Women's Club Lacrosse Practice",
-    "start": "2025-11-07 05:00 PM EST",
-    "end": "07:00 PM EST",
-    "location": "Turf Field A",
-    "organization": "Women's Club Lacrosse"
-  },
-  {
-    "name": "Terrarium Event",
-    "start": "2025-11-07 05:00 PM EST",
-    "end": "07:00 PM EST",
-    "location": "Life Sciences 066 (Greenhouse)",
-    "organization": "Greenhouse Club"
-  },
-  {
-    "name": "Fencing Practice",
-    "start": "2025-11-07 05:00 PM EST",
-    "end": "06:30 PM EST",
-    "location": "MAC Courts",
-    "organization": "Fencing Club"
-  },
-  {
-    "name": "Dodgeball Club Practice",
-    "start": "2025-11-07 05:00 PM EST",
-    "end": "06:30 PM EST",
-    "location": "Campus Recreation Center Wood Court #3",
-    "organization": "Dodgeball Club"
-  },
-  {
-    "name": "Pilates X Women in Business Collab",
-    "start": "2025-11-07 05:00 PM EST",
-    "end": "06:00 PM EST",
-    "location": "Stony Brook Union, L06-01A",
-    "organization": "Pilates Club"
-  },
-  {
-    "name": "Women's Rugby Friday Practice",
-    "start": "2025-11-07 05:00 PM EST",
-    "end": "07:00 PM EST",
-    "location": "South P",
-    "organization": "Women's Rugby Football "
-  },
-  {
-    "name": "OXI Day celebration",
-    "start": "2025-11-07 06:00 PM EST",
-    "end": "09:00 PM EST",
-    "location": "Bauman co29",
-    "organization": "Greek & Cypriot Student Association"
-  },
-  {
-    "name": "Kabbalat Shabbat",
-    "start": "2025-11-07 06:00 PM EST",
-    "end": "07:00 PM EST",
-    "location": "Interfaith Chapel, Student Union Building L10",
-    "organization": "Stony Brook Hillel"
-  },
-  {
-    "name": "GBM House of Cards ",
-    "start": "2025-11-07 06:00 PM EST",
-    "end": "08:00 PM EST",
-    "location": "Physics Building P-130",
-    "organization": "House of Cards at SBU"
-  },
-  {
-    "name": "First Gen Cafe",
-    "start": "2025-11-07 06:00 PM EST",
-    "end": "08:00 PM EST",
-    "location": "UNITI Cultural Center (UCC) - SB Union 113",
-    "organization": "Diversity, Intercultural, and Community Engagement Office"
-  },
-  {
-    "name": "DI Ice Hockey Club Away Game vs University of Delaware ",
-    "start": "2025-11-07 06:15 PM EST",
-    "end": "08:45 PM EST",
-    "location": "Fred Rust Arena ",
-    "organization": "Ice Hockey"
-  },
-  {
-    "name": "TC Presents: Air Dry Clay Making",
-    "start": "2025-11-07 06:30 PM EST",
-    "end": "07:30 PM EST",
-    "location": "Tabler 107",
-    "organization": "Tzu Chi Stony Brook Collegiate Association"
-  },
-  {
-    "name": "Stony Brook Women's Basketball vs. Molloy",
-    "start": "2025-11-07 06:30 PM EST",
-    "end": "09:00 PM EST",
-    "location": "Stony Brook Arena",
-    "organization": "Stony Brook Athletics"
-  },
-  {
-    "name": "SBU Kendo Practice (Fridays)",
-    "start": "2025-11-07 06:30 PM EST",
-    "end": "08:00 PM EST",
-    "location": "Walter J. Hawrys Campus Recreation Center - Multi-Activitiy Court",
-    "organization": "Kendo Club at SBU"
-  },
-  {
-    "name": "Dinner & Discourse w/ RA Justin",
-    "start": "2025-11-07 06:30 PM EST",
-    "end": "07:30 PM EST",
-    "location": "Ammann Communal Kitchen",
-    "organization": "Mendelsohn Community "
-  },
-  {
-    "name": "Friday Volleyball Practice",
-    "start": "2025-11-07 06:30 PM EST",
-    "end": "07:30 PM EST",
-    "location": "Campus Recreation Center - Wood Courts 1 & 2 ",
-    "organization": "Volleyball Club at SBU"
-  },
-  {
-    "name": "Make a Smiski, WIn a Smiski‼️",
-    "start": "2025-11-07 07:00 PM EST",
-    "end": "09:00 PM EST",
-    "location": "Union Multi-purpose Room by the Club Hub",
-    "organization": "New Student and Transition Programs"
-  },
-  {
-    "name": "'Go' By Cortis TikTok Dance Workshop",
-    "start": "2025-11-07 07:00 PM EST",
-    "end": "08:30 PM EST",
-    "location": "West E Commons Multipurpose Room",
-    "organization": "Schomburg West Apartments"
-  },
-  {
-    "name": "Make a Smiski, WIn a Smiski‼️",
-    "start": "2025-11-07 07:00 PM EST",
-    "end": "09:00 PM EST",
-    "location": "Union Multi-purpose Room by the Club Hub",
-    "organization": "New Student and Transition Programs"
-  },
-  {
-    "name": "SBUHacks",
-    "start": "2025-11-07 07:00 PM EST",
-    "end": "11:59 PM EST",
-    "location": "Melville Library",
-    "organization": "Computing Society at Stony Brook"
-  },
-  {
-    "name": "Ultimate Frisbee Practice - Friday",
-    "start": "2025-11-07 07:00 PM EST",
-    "end": "09:00 PM EST",
-    "location": "South P Field A (Turf)",
-    "organization": "Ultimate Frisbee"
-  },
-  {
-    "name": "SBUHacks Opening Ceremony",
-    "start": "2025-11-07 07:00 PM EST",
-    "end": "10:00 PM EST",
-    "location": "SAC Ballroom B",
-    "organization": "Computing Society at Stony Brook"
-  },
-  {
-    "name": "Open Jam Session #2 ",
-    "start": "2025-11-07 07:00 PM EST",
-    "end": "09:00 PM EST",
-    "location": "SAC 169 (SHORE CLUB)",
-    "organization": "Music and Medicine"
-  },
-  {
-    "name": "Diamond Painting & Savings",
-    "start": "2025-11-07 07:30 PM EST",
-    "end": "08:30 PM EST",
-    "location": "Chinn Classroom",
-    "organization": "Tabler Community"
-  },
-  {
     "name": "Initiation",
     "start": "2025-11-07 08:00 PM EST",
     "end": "10:00 PM EST",
@@ -917,18 +574,18 @@
     "organization": "Ice Hockey"
   },
   {
-    "name": "Lunch & Learn",
-    "start": "2025-11-10 12:30 PM EST",
-    "end": "01:30 PM EST",
-    "location": "Hillel Lounge, Student Union Building L11",
-    "organization": "Stony Brook Hillel"
-  },
-  {
     "name": "PPGA's FREE Plan B Tabling",
     "start": "2025-11-10 12:30 PM EST",
     "end": "01:50 PM EST",
     "location": "SAC Lobby",
     "organization": "Planned Parenthood Generation Action at Stony Brook University"
+  },
+  {
+    "name": "Lunch & Learn",
+    "start": "2025-11-10 12:30 PM EST",
+    "end": "01:30 PM EST",
+    "location": "Hillel Lounge, Student Union Building L11",
+    "organization": "Stony Brook Hillel"
   },
   {
     "name": "Writing out of the CHamoru Diaspora- Alumni Talk",
@@ -1398,5 +1055,348 @@
     "end": "06:00 PM EST",
     "location": "Stony Brook Union, L06-01A",
     "organization": "Pilates Club"
+  },
+  {
+    "name": "Wolfie's Big Band Rehearsal",
+    "start": "2025-11-11 06:00 PM EST",
+    "end": "09:30 PM EST",
+    "location": " Union L03 (Basement Rehearsal Room) ",
+    "organization": "Wolfie’s Big Band"
+  },
+  {
+    "name": "Tune In with RA Sami",
+    "start": "2025-11-11 06:00 PM EST",
+    "end": "07:00 PM EST",
+    "location": "West E Commons",
+    "organization": "Schomburg West Apartments"
+  },
+  {
+    "name": "Wolfiethon Team Captain Meetings",
+    "start": "2025-11-11 06:00 PM EST",
+    "end": "07:00 PM EST",
+    "location": "Fraternity and Sorority Lounge (Union Basement)",
+    "organization": "Wolfiethon "
+  },
+  {
+    "name": "ACS X AIChE: ChemE Car",
+    "start": "2025-11-11 06:00 PM EST",
+    "end": "07:00 PM EST",
+    "location": "Chemistry Building 412",
+    "organization": "American Chemical Society"
+  },
+  {
+    "name": "AAPI Mentorship Mentee Mixer",
+    "start": "2025-11-11 06:00 PM EST",
+    "end": "07:30 PM EST",
+    "location": "SAC 306",
+    "organization": "AAPI Mentorship Network"
+  },
+  {
+    "name": "Benedict Hall Council Election",
+    "start": "2025-11-11 06:30 PM EST",
+    "end": "07:30 PM EST",
+    "location": "Benedict South Lounge",
+    "organization": "H Community"
+  },
+  {
+    "name": "Stony Brook Men's Basketball vs. St. Joseph's Long Island",
+    "start": "2025-11-11 06:30 PM EST",
+    "end": "08:30 PM EST",
+    "location": "Stony Brook Arena",
+    "organization": "Stony Brook Athletics"
+  },
+  {
+    "name": "Ski Club Board Meetings",
+    "start": "2025-11-11 06:30 PM EST",
+    "end": "08:30 PM EST",
+    "location": "250 John S. Toll Drive, Stony Brook, NY 11794",
+    "organization": "Ski and Snowboard Club at Stony Brook"
+  },
+  {
+    "name": "SIS Chapter",
+    "start": "2025-11-11 07:00 PM EST",
+    "end": "08:00 PM EST",
+    "location": "Devries 109-111",
+    "organization": "Sigma Iota Sigma "
+  },
+  {
+    "name": "The Gathering",
+    "start": "2025-11-11 07:00 PM EST",
+    "end": "10:00 PM EST",
+    "location": "Sac Ballroom A",
+    "organization": "Chi Alpha Christian Fellowship"
+  },
+  {
+    "name": "SBU Comp Prog Weekly Meeting",
+    "start": "2025-11-11 07:00 PM EST",
+    "end": "10:00 PM EST",
+    "location": "Old CS Building Room 2114",
+    "organization": "Competitive Programming Club"
+  },
+  {
+    "name": "High C's Tuesday Rehearsal ",
+    "start": "2025-11-11 07:00 PM EST",
+    "end": "10:00 PM EST",
+    "location": "SAC Rehearsal Space",
+    "organization": "High Cs"
+  },
+  {
+    "name": "Women's Club Lacrosse Practice",
+    "start": "2025-11-11 07:00 PM EST",
+    "end": "09:00 PM EST",
+    "location": "Turf Field A",
+    "organization": "Women's Club Lacrosse"
+  },
+  {
+    "name": "The Bay Gull GBM",
+    "start": "2025-11-11 07:00 PM EST",
+    "end": "07:50 PM EST",
+    "location": "N4072, Frank Melville, Jr. Memorial Library",
+    "organization": "The Bay Gull"
+  },
+  {
+    "name": "Beer Goggles 2.0 Seeing Clearly",
+    "start": "2025-11-11 07:00 PM EST",
+    "end": "08:00 PM EST",
+    "location": "Hamilton Classroom",
+    "organization": "Residential Conduct and Community Standards"
+  },
+  {
+    "name": "Women's Rugby Club Tuesday Practice",
+    "start": "2025-11-11 07:00 PM EST",
+    "end": "08:00 PM EST",
+    "location": "South P",
+    "organization": "Women's Rugby Football "
+  },
+  {
+    "name": "Brick and Chill: Lego Building Contest ",
+    "start": "2025-11-11 07:00 PM EST",
+    "end": "08:30 PM EST",
+    "location": "Hendrix College Lounge",
+    "organization": "Roth Community"
+  },
+  {
+    "name": "Game Night",
+    "start": "2025-11-11 07:00 PM EST",
+    "end": "11:00 PM EST",
+    "location": "The Shore Club",
+    "organization": "Phi Delta Epsilon Medical Fraternity"
+  },
+  {
+    "name": "Top loader Decorating Night!",
+    "start": "2025-11-11 07:00 PM EST",
+    "end": "09:00 PM EST",
+    "location": "Frey Hall 100",
+    "organization": "Pokémon GO Club"
+  },
+  {
+    "name": "Volunteer Meetings",
+    "start": "2025-11-11 07:00 PM EST",
+    "end": "08:00 PM EST",
+    "location": "Union Fraternity & Sorority Lounge",
+    "organization": "Wolfiethon "
+  },
+  {
+    "name": "Plants & Painted Pots₊˚ʚ 🌱 ₊˚✧ ﾟ.",
+    "start": "2025-11-11 07:30 PM EST",
+    "end": "08:30 PM EST",
+    "location": "Dreiser Classroom",
+    "organization": "Tabler Community"
+  },
+  {
+    "name": "Keller Hall Council General Body Meeting (GBM)",
+    "start": "2025-11-11 07:30 PM EST",
+    "end": "08:30 PM EST",
+    "location": "Keller Hall Lounge",
+    "organization": "Roosevelt Community"
+  },
+  {
+    "name": "KCF MEETING",
+    "start": "2025-11-11 08:00 PM EST",
+    "end": "09:00 PM EST",
+    "location": "Staller M0113",
+    "organization": "Korean Christian Fellowship"
+  },
+  {
+    "name": "ChemE Jeopardy Weekly Meetings",
+    "start": "2025-11-11 08:00 PM EST",
+    "end": "09:00 PM EST",
+    "location": "ESS 177",
+    "organization": "American Institute of Chemical Engineers"
+  },
+  {
+    "name": "NAACP Trivia Night",
+    "start": "2025-11-11 08:00 PM EST",
+    "end": "09:00 PM EST",
+    "location": "Roth 122",
+    "organization": "National Association for the Advancement of Colored People"
+  },
+  {
+    "name": "LASO's General Body Meeting",
+    "start": "2025-11-11 08:00 PM EST",
+    "end": "08:50 PM EST",
+    "location": "SAC 306",
+    "organization": "Latin American Student Organization"
+  },
+  {
+    "name": "Stony Sigmas Presents: Alpha Psi Unveiling Show",
+    "start": "2025-11-11 08:00 PM EST",
+    "end": "10:00 PM EST",
+    "location": "SAC Auditorium ",
+    "organization": "Sigma Psi Zeta Sorority, Inc. - CURRENTLY ON ADMINISTRATIVE WARNING"
+  },
+  {
+    "name": "Stellar Craft Night!",
+    "start": "2025-11-11 08:00 PM EST",
+    "end": "09:00 PM EST",
+    "location": "ESS 450",
+    "organization": "Chávez Tubman and Nobel Community"
+  },
+  {
+    "name": "Operation Appreciation!",
+    "start": "2025-11-11 08:30 PM EST",
+    "end": "09:30 PM EST",
+    "location": "Schick Hall Classroom",
+    "organization": "Kelly Community"
+  },
+  {
+    "name": "Ultimate Frisbee Practice - Tuesday",
+    "start": "2025-11-11 09:00 PM EST",
+    "end": "11:00 PM EST",
+    "location": "South P Field C (Grass)",
+    "organization": "Ultimate Frisbee"
+  },
+  {
+    "name": "Pie an RA!",
+    "start": "2025-11-11 09:00 PM EST",
+    "end": "10:00 PM EST",
+    "location": "ERC (Roosevelt Quad) Pit",
+    "organization": "Chávez Tubman and Nobel Community"
+  },
+  {
+    "name": "Stony aKDPHI X PDPsi Presents: Halo Halo",
+    "start": "2025-11-11 09:00 PM EST",
+    "end": "10:30 PM EST",
+    "location": "SAC 303",
+    "organization": "alpha Kappa Delta Phi"
+  },
+  {
+    "name": "DI Ice Hockey Club November Practices",
+    "start": "2025-11-11 10:00 PM EST",
+    "end": "11:00 PM EST",
+    "location": "The Rinx",
+    "organization": "Ice Hockey"
+  },
+  {
+    "name": "WUSB Recess ",
+    "start": "2025-11-12 12:00 PM EST",
+    "end": "02:00 PM EST",
+    "location": "wusb",
+    "organization": "Student Media Services"
+  },
+  {
+    "name": "Wolfiethon Outreach Tabling",
+    "start": "2025-11-12 12:00 PM EST",
+    "end": "02:00 PM EST",
+    "location": "Union Lobby",
+    "organization": "Wolfiethon "
+  },
+  {
+    "name": "MarioKart & Mocktails w/ CPO",
+    "start": "2025-11-12 12:00 PM EST",
+    "end": "01:00 PM EST",
+    "location": "CPO Training Room",
+    "organization": "Girl Up"
+  },
+  {
+    "name": "Exhibit: Weaving Words, Weaving Worlds: The Power of Indigenous Language in Contemporary Art",
+    "start": "2025-11-12 12:00 PM EST",
+    "end": "07:00 PM EST",
+    "location": "Paul W. Zuccaire Gallery  Staller Center for the Arts",
+    "organization": "Paul W. Zuccaire Gallery"
+  },
+  {
+    "name": "Taandava Bake Sale: If you Give a Baby a Cookie!",
+    "start": "2025-11-12 12:00 PM EST",
+    "end": "02:00 PM EST",
+    "location": "SAC Lobby",
+    "organization": "Taandava"
+  },
+  {
+    "name": "SBU Greenhouse Club Plant Sale",
+    "start": "2025-11-12 12:00 PM EST",
+    "end": "02:00 PM EST",
+    "location": "SAC Lobby",
+    "organization": "Greenhouse Club"
+  },
+  {
+    "name": "HIV Testing and PrEP Consultations ",
+    "start": "2025-11-12 12:00 PM EST",
+    "end": "05:00 PM EST",
+    "location": "CPO Union 108",
+    "organization": "Center for Prevention and Outreach"
+  },
+  {
+    "name": "Dodgeball Club Practice",
+    "start": "2025-11-12 12:30 PM EST",
+    "end": "02:00 PM EST",
+    "location": "Campus Recreation Center Wood Court #3",
+    "organization": "Dodgeball Club"
+  },
+  {
+    "name": "Sailing Chalk Talk",
+    "start": "2025-11-12 12:30 PM EST",
+    "end": "01:30 PM EST",
+    "location": "Humanities Building - Room 2045",
+    "organization": "Sailing"
+  },
+  {
+    "name": "VESO GBM",
+    "start": "2025-11-12 12:30 PM EST",
+    "end": "01:30 PM EST",
+    "location": "VESO student veteran lounge",
+    "organization": "Veteran Student Organization"
+  },
+  {
+    "name": "Selecting and using images for your papers, projects, and more",
+    "start": "2025-11-12 12:30 PM EST",
+    "end": "01:30 PM EST",
+    "location": "Online",
+    "organization": "University Libraries"
+  },
+  {
+    "name": "PPGA's FREE Plan B Tabling",
+    "start": "2025-11-12 12:30 PM EST",
+    "end": "01:50 PM EST",
+    "location": "Union Lobby",
+    "organization": "Planned Parenthood Generation Action at Stony Brook University"
+  },
+  {
+    "name": "GBM 11",
+    "start": "2025-11-12 12:30 PM EST",
+    "end": "01:20 PM EST",
+    "location": "Frey Hall ",
+    "organization": "Fantasy Sports and Analytics Association"
+  },
+  {
+    "name": "Bagel Bash!",
+    "start": "2025-11-12 12:30 PM EST",
+    "end": "02:00 PM EST",
+    "location": "Hillel Lounge",
+    "organization": "Stony Brook Hillel"
+  },
+  {
+    "name": "Mindful Moments",
+    "start": "2025-11-12 12:30 PM EST",
+    "end": "01:30 PM EST",
+    "location": "Center for Prevention and Outreach, Student Union Room 108",
+    "organization": "Center for Prevention and Outreach"
+  },
+  {
+    "name": " Clubs & Orgs Leadership Council",
+    "start": "2025-11-12 12:30 PM EST",
+    "end": "01:50 PM EST",
+    "location": "SAC Ballroom B",
+    "organization": "Student Engagement & Activities"
   }
 ]
