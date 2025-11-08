@@ -27,57 +27,16 @@
   <div class="content-container">
     <div class="left-content">
       <h3>Events</h3>
-      <p>These are the events for the week</p>
-
-       <div class="event-container">
-  <div class="event" data-name="Event 1" data-from="202511081000" data-to="202511081130">
-    <strong>Event 1</strong><br>
-    <span class="event-time">2025-11-08 10:00 - 11:30</span><br>
-    <img src="https://www.stonybrook.edu/erp/_images/wolfie.png" alt="Event 1">
-  </div>
-
-  <div class="event" data-name="Event 2" data-from="202511091100" data-to="202511091230">
-    <strong>Event 2</strong><br>
-    <span class="event-time">2025-11-09 11:00 - 12:30</span><br>
-    <img src="https://www.stonybrook.edu/erp/_images/wolfie.png" alt="Event 2">
-  </div>
-  <!-- Add other events similarly -->
-</div>
-
-    </div>
+      <p>Select which events you are interested in.
+        Then, generate possible schedules based on your free time and your selections.</p>
+      <div class="event-container">
+        <!-- Events will be loaded dynamically -->
+      </div>
     </div>
 
-    <div class="right-content">
-    </div>
-
-   
   </div>
-<script>
-  const eventBoxes = document.querySelectorAll('.event');
-let selectedEvents = JSON.parse(localStorage.getItem('selectedEvents')) || [];
 
-eventBoxes.forEach(box => {
-  const name = box.dataset.name;
-  const img = box.querySelector('img').src;
-
-  // Restore selection
-  if (selectedEvents.some(e => e.name === name)) {
-    box.classList.add('selected');
-  }
-
-  box.addEventListener('click', () => {
-    if (box.classList.contains('selected')) {
-      box.classList.remove('selected');
-      selectedEvents = selectedEvents.filter(e => e.name !== name);
-    } else {
-      box.classList.add('selected');
-      selectedEvents.push({ name, img });
-    }
-    localStorage.setItem('selectedEvents', JSON.stringify(selectedEvents));
-  });
-});
-
-</script>
+  <script src="events.js"></script>
 
 
 

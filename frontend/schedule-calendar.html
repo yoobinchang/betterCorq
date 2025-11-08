@@ -24,13 +24,83 @@
     .nav-link.current { text-decoration: underline; }
 
     /* Calendar */
-    .calendar-container { flex: 1; padding: 20px; overflow-x: auto; }
-    .calendar-header { display: grid; grid-template-columns: 60px repeat(7, 1fr); text-align: center; margin-bottom: 5px; }
-    .calendar-body { display: grid; grid-template-columns: 60px repeat(7, 1fr); }
-    .time-cell { height: 20px; border: 1px solid #ccc; line-height: 20px; text-align: center; font-size: 12px; }
-    .cell { height: 20px; border: 1px solid #ccc; }
+    .calendar-container { 
+      flex: 1; 
+      padding: 20px; 
+      overflow-x: auto;
+    }
+    .calendar-actions {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+      justify-content: center;
+    }
+    .action-button {
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background-color: var(--red);
+      color: var(--white);
+    }
+    .action-button:hover {
+      background-color: var(--med-red);
+      transform: translateY(-2px);
+    }
+    .action-button.clear-button {
+      background-color: #888;
+    }
+    .action-button.clear-button:hover {
+      background-color: #666;
+    }
+    .calendar-header { 
+      display: grid; 
+      grid-template-columns: 60px repeat(7, 1fr); 
+      text-align: center; 
+      margin-bottom: 5px;
+      position: sticky;
+      top: 0;
+      background-color: white;
+      z-index: 1;
+    }
+    .calendar-body { 
+      display: grid; 
+      grid-template-columns: 60px repeat(7, 1fr); 
+      grid-auto-rows: 20px;
+    }
+    .time-cell { 
+      height: 20px; 
+      border: 1px solid #ccc; 
+      line-height: 20px; 
+      text-align: center; 
+      font-size: 12px;
+      background-color: white;
+      position: sticky;
+      left: 0;
+      z-index: 2;
+    }
+    .cell { 
+      height: 20px; 
+      border: 1px solid #ccc;
+      min-width: 100px;
+    }
     .cell.busy { background-color: var(--busy-gray); }
-    .cell.event { background-color: var(--red); color: white; text-align: center; font-size: 12px; font-weight: bold; }
+    .cell.event { 
+      background-color: var(--red); 
+      color: white; 
+      text-align: center; 
+      font-size: 12px; 
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    
+    .cell.event:hover {
+      background-color: var(--med-red);
+    }
 
     /* Footer */
     .footer { background-color: var(--red); color: var(--white); text-align: center; padding: 20px; }
@@ -51,6 +121,10 @@
 
   <!-- Calendar Container -->
   <div class="calendar-container">
+    <div class="calendar-actions">
+      <button class="action-button" onclick="window.location.href='events.html'">Return to Event Selection</button>
+      <button class="action-button clear-button" onclick="clearSchedule()">Clear All Events</button>
+    </div>
     <div class="calendar-header">
       <div class="time-label"></div>
       <div class="day-header">Mon</div>
@@ -70,25 +144,50 @@
   </div>
 
   <script>
+    // Function to clear all events from the schedule
+    function clearSchedule() {
+      if (confirm('Are you sure you want to remove all events from your schedule?')) {
+        // Clear events from localStorage but keep availability
+        const events = [];
+        localStorage.setItem('selectedEvents', JSON.stringify(events));
+        
+        // Remove all event cells from calendar
+        const eventCells = document.querySelectorAll('.cell.event');
+        eventCells.forEach(cell => {
+          cell.classList.remove('event');
+          cell.textContent = '';
+          cell.removeAttribute('data-event');
+        });
+      }
+    }
+
     const calendar = document.getElementById('calendar');
     const days = 7;
     const startHour = 8;
     const endHour = 20;
     const cellHeight = 20;
 
-    // Generate time slots
+    // Generate time slots starting from the current date
     const weekDates = [];
+    const today = new Date();
     for (let d = 0; d < days; d++) {
-      const today = new Date();
-      today.setDate(today.getDate() + d);
-      const dayStr = today.toISOString().split('T')[0];
+      const currentDate = new Date(today);
+      currentDate.setDate(currentDate.getDate() + d);
+      // Format date as YYYY-MM-DD to match event date format
+      const year = currentDate.getFullYear();
+      const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+      const day = String(currentDate.getDate()).padStart(2, '0');
+      const dayStr = `${year}-${month}-${day}`;
       weekDates.push(dayStr);
     }
+    console.log('Generated week dates:', weekDates); // Debug log
 
     for (let hour = startHour; hour < endHour; hour++) {
       for (let half = 0; half < 2; half++) {
         const minute = half * 30;
+        // Ensure hours are in 24-hour format with leading zeros
         const timeStr = `${String(hour).padStart(2,'0')}:${String(minute).padStart(2,'0')}`;
+        console.log('Creating time slot:', timeStr); // Debug log
 
         // Time label
         const timeCell = document.createElement('div');
@@ -101,9 +200,12 @@
           const cell = document.createElement('div');
           cell.classList.add('cell');
           cell.style.height = cellHeight + 'px';
-          cell.setAttribute('data-day', day);
+          cell.setAttribute('data-day', day); // day is already in YYYY-MM-DD format
           cell.setAttribute('data-time', timeStr);
+          // Add debug info
+          cell.title = `Day: ${day}, Time: ${timeStr}`;
           calendar.appendChild(cell);
+          console.log('Created cell:', { day, time: timeStr }); // Debug log
         });
       }
     }
@@ -126,17 +228,112 @@
       }
     });
 
-    // Place events in first available free slot (without images)
-    const events = JSON.parse(localStorage.getItem('selectedEvents')) || [];
-    events.forEach(event => {
-      for (let d = 0; d < days; d++) {
-        const day = weekDates[d];
-        const cell = Array.from(document.querySelectorAll(`.cell[data-day="${day}"]:not(.busy):not(.event)`))[0];
-        if(cell){
-          cell.classList.add('event');
-          cell.textContent = event.name; // Only show name on calendar
-          break;
+    // Function to remove an event
+    function removeEvent(eventName) {
+      // Remove from localStorage
+      const events = JSON.parse(localStorage.getItem('selectedEvents')) || [];
+      const updatedEvents = events.filter(event => event.name !== eventName);
+      localStorage.setItem('selectedEvents', JSON.stringify(updatedEvents));
+
+      // Remove from calendar
+      const eventCells = document.querySelectorAll('.cell.event');
+      eventCells.forEach(cell => {
+        if (cell.textContent === eventName) {
+          cell.classList.remove('event');
+          cell.textContent = '';
+          cell.removeAttribute('data-event');
         }
+      });
+    }
+
+    // Function to convert 12-hour time to 24-hour time
+    function convertTo24Hour(timeStr) {
+      // Remove EST and trim
+      timeStr = timeStr.replace(' EST', '').trim();
+      
+      // Split into time and AM/PM
+      const [time, period] = timeStr.split(' ');
+      let [hours, minutes] = time.split(':').map(num => parseInt(num) || 0);
+      
+      // Convert to 24-hour format
+      if (period === 'PM' && hours !== 12) {
+        hours += 12;
+      } else if (period === 'AM' && hours === 12) {
+        hours = 0;
+      }
+      
+      // Return in HH:MM format
+      return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+    }
+
+    // Place events in their correct time slots
+    const events = JSON.parse(localStorage.getItem('selectedEvents')) || [];
+    console.log('Loaded events:', events); // Debug log
+
+    events.forEach(event => {
+      console.log('Processing event:', event); // Debug log
+      
+      // Extract date and time components
+      const [eventDateStr, eventTimeStr, ampm, timezone] = event.start.split(' ');
+      console.log('Date components:', { eventDateStr, eventTimeStr, ampm, timezone }); // Debug log
+      
+      // Convert start time to 24-hour format
+      const startTimeParts = event.start.split(' ');
+      const startTime = convertTo24Hour(`${startTimeParts[1]} ${startTimeParts[2]}`);
+      // For end time, combine the date from start with the end time
+      const endTime = convertTo24Hour(event.end);
+      
+      console.log('Converted times:', { startTime, endTime }); // Debug log
+      
+      // Parse hours and minutes
+      const [startHour, startMinute] = startTime.split(':').map(Number);
+      const [endHour, endMinute] = endTime.split(':').map(Number);
+      
+      console.log('Available days:', weekDates); // Debug log
+      console.log('Event date:', eventDateStr); // Debug log
+      
+      // Find the matching day in our calendar
+      if (weekDates.includes(eventDateStr)) {
+        console.log('Found matching day for event'); // Debug log
+        
+        // Fill all time slots between start and end times
+        for (let hour = startHour; hour <= endHour; hour++) {
+          // Handle 30-minute intervals
+          const intervals = [0, 30];
+          intervals.forEach(minute => {
+            // Skip intervals before start time or after end time
+            const currentTime = hour + minute/60;
+            const eventStartTime = startHour + startMinute/60;
+            const eventEndTime = endHour + endMinute/60;
+            
+            if (currentTime >= eventStartTime && currentTime < eventEndTime) {
+              const timeStr = `${String(hour).padStart(2,'0')}:${String(minute).padStart(2,'0')}`;
+              console.log('Looking for cell:', { day: eventDateStr, time: timeStr }); // Debug log
+              
+              const cell = document.querySelector(`.cell[data-day="${eventDateStr}"][data-time="${timeStr}"]`);
+              
+              if (cell) {
+                console.log('Found cell, adding event'); // Debug log
+                if (!cell.classList.contains('busy')) {
+                  cell.classList.add('event');
+                  cell.textContent = event.name;
+                  cell.setAttribute('data-event', event.name);
+                  
+                  // Add click handler to remove event
+                  cell.addEventListener('click', function() {
+                    if (confirm(`Remove "${event.name}" from your schedule?`)) {
+                      removeEvent(event.name);
+                    }
+                  });
+                }
+              } else {
+                console.log('No cell found for this time slot'); // Debug log
+              }
+            }
+          });
+        }
+      } else {
+        console.log('No matching day found for event'); // Debug log
       }
     });
   </script>
