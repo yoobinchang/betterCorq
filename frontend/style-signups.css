@@ -49,8 +49,7 @@ input[type="text"] {
   border-radius: 10px;
   border: 2px solid rgb(213, 32, 39);
   font-size: 18px;
-  width: 55vh;
-  margin-bottom: 10px;
+  width: 50vh;
 }
 
 .content-container {

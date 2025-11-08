@@ -23,13 +23,13 @@
     height: 40px;
 }
 #nav-side-bar{
-  margin-left: 90vh;
+  position: absolute;
+  margin-left: 100vh;
   margin-top: 3vh;
   background-color: var(--red);
   color: var(--black);
   border-radius: 20px;
-  padding: 30px;
-  text-align: center;
+padding: 20px 40px;  text-align: center;
   font-size: 22px;
   font-weight: bold;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -65,7 +65,7 @@
   background-color: var(--white);
 }
 .left-content {
-  margin-top: 2vh; /* current value */
+  margin-top: 85vh; /* current value */
   margin-left: 3vh;
   width: 55vw;
   padding-top: 50px; /* adds extra space inside the container */
