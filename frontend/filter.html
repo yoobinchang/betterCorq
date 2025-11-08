@@ -3,33 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Styled Website</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>BetterCorq</title>
+  <link rel="stylesheet" href="filter.css" />
   <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-
 </head>
 <body>
 
   <!-- Navigation Bar -->
-  <div id="nav-bar">
-    <a href="home.html" class="nav-link">Home</a>
-    <a href="events.html" class="nav-link">Events</a>
-    <a href="filter.html" class="nav-link">Filter</a>
-    <a href="profile.html" class="nav-link">Profile</a>
-  </div>
-
-  <!-- Main Content -->
-  <div class="content-container">
-    <div class="left-content">
-      <h3>Welcome to the Profile Page!</h3>
-      <p>corq sucks bro, so we've made it better.</p>
-      <a href="#">(coming soon)</a>
-    </div>
-
-    <div class="right-content">
-      <img src="https://via.placeholder.com/300" alt="Profile" />
+   <div class="nav-bar-container">
+    <div class="block1"></div>
+    <div class="nav-bar">
+        <a href="home.html" class="nav-link">Home</a>
+        <a href="events.html" class="nav-link">Events</a>
+        <a href="filter.html" class="nav-link">Filter</a>
+        <a href="profile.html" class="nav-link">Profile</a>
     </div>
   </div>
+
+<!-- Main Content -->
+<div class="calendar-container">
+  <div class="calendar-header">
+    <div class="time-label"></div>
+    <div class="day-header">Mon</div>
+    <div class="day-header">Tue</div>
+    <div class="day-header">Wed</div>
+    <div class="day-header">Thu</div>
+    <div class="day-header">Fri</div>
+    <div class="day-header">Sat</div>
+    <div class="day-header">Sun</div>
+  </div>
+  <div class="calendar-body" id="schedule"></div>
+</div>
+  
+<script src="filter.js"></script>
+
+
+
+    <!-- Footer -->
+     <div class="footer">
+      <p>&copy; Demo website made for SBUHacks! Please contacts jillian.calub@stonybrook.edu, katy.ng@stonybrook.edu, yoobin.chang@stonybrook.edu, renee.siu@stonybrook.edu for more information</p>
+    </div>
 
 </body>
 </html>
