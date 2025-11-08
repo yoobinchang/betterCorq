@@ -22,16 +22,23 @@
     <div class="left-content">
       <h3>Let's get you some events!</h3>
       <p>that's right! get a life, bitch.</p>
-      <label for="name">Name:</label>
+      <label for="name" class="nav-link-b">Name:</label>
       <input type="text" id="name" placeholder="Enter your name">
       <br><br>
-      <label for="password">Password:</label>
-      <input type="text" id="password" placeholder="Enter your password">
+      <label for="password" class="nav-link-b">Password:</label>
+<div class="pw-wrapper">
+  <input type="password" id="password" placeholder="Enter your password">
+  <button type="button" class="pw-toggle" aria-label="Show password">Show</button>
+</div>
+<br><br>
+<label for="password2" class="nav-link-b">Re-enter Password:</label>
+<div class="pw-wrapper">
+  <input type="password" id="password2" placeholder="Re-enter your password">
+  <button type="button" class="pw-toggle" aria-label="Show password">Show</button>
+</div>
+
       <br><br>
-      <label for="password2">Re-enter Password:</label>
-      <input type="text" id="password2" placeholder="Enter your name">
-      <br><br>
-      <label for="schedule">Upload your schedule:</label>
+      <label for="schedule" class="nav-link-b">Upload your schedule:</label>
       <input type="file" accept="image/*" id="imageUpload">
       <br><br>
 <img id="preview" src="" alt="Image preview" width="500" style="display:none; border-radius:10px;">
@@ -59,6 +66,24 @@
     <div class="right-content">
     </div>
   </div>
+<script>
+  document.querySelectorAll('.pw-wrapper').forEach(wrapper => {
+    const input = wrapper.querySelector('input');
+    const btn = wrapper.querySelector('.pw-toggle');
+
+    btn.addEventListener('click', () => {
+      if (input.type === 'password') {
+        input.type = 'text';
+        btn.textContent = 'Hide';
+        btn.setAttribute('aria-pressed', 'true');
+      } else {
+        input.type = 'password';
+        btn.textContent = 'Show';
+        btn.setAttribute('aria-pressed', 'false');
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
