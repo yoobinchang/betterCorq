@@ -41,7 +41,7 @@
   padding: 15px 30px;
   background-color: var(--white);
   color: var(--red);
-  border: 5px solid var(--red);
+  border: 5px solid var(--dark-red);
   font-size: 2vw;
   border-radius: 15px;
   cursor: pointer;
@@ -76,7 +76,7 @@
   background-color: var(--white);
 }
 .left-content {
-  margin-top: 85vh; /* current value */
+  margin-top: 15vh; /* current value */
   margin-left: 3vh;
   width: 55vw;
   padding-top: 50px; /* adds extra space inside the container */
