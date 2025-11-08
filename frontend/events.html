@@ -20,7 +20,7 @@
     
   </div>
   <div id="nav-side-bar">
-    <button onclick="window.location.href='schedule.html'">Generate Schedule</button>
+    <button onclick="window.location.href='schedule-calendar.html'">Generate Schedule</button>
   </div>
 
   <!-- Main Content -->
@@ -30,22 +30,20 @@
       <p>These are the events for the week</p>
 
        <div class="event-container">
-        <div class="event" data-name="Event 1">Event 1
-          <br><br>
-            <img src="https://www.stonybrook.edu/erp/_images/wolfie.png" alt="Profile" />
-        </div>
-        <div class="event" data-name="Event 2">Event 2
-          <br><br>
-            <img src="https://www.stonybrook.edu/erp/_images/wolfie.png" alt="Profile" />
-        </div>
-        <div class="event" data-name="Event 3">Event 3
-          <br><br>
-            <img src="https://www.stonybrook.edu/erp/_images/wolfie.png" alt="Profile" />
-        </div>
-        <div class="event" data-name="Event 4">Event 4
-          <br><br>
-            <img src="https://www.stonybrook.edu/erp/_images/wolfie.png" alt="Profile" />
-        </div>
+  <div class="event" data-name="Event 1" data-from="202511081000" data-to="202511081130">
+    <strong>Event 1</strong><br>
+    <span class="event-time">2025-11-08 10:00 - 11:30</span><br>
+    <img src="https://www.stonybrook.edu/erp/_images/wolfie.png" alt="Event 1">
+  </div>
+
+  <div class="event" data-name="Event 2" data-from="202511091100" data-to="202511091230">
+    <strong>Event 2</strong><br>
+    <span class="event-time">2025-11-09 11:00 - 12:30</span><br>
+    <img src="https://www.stonybrook.edu/erp/_images/wolfie.png" alt="Event 2">
+  </div>
+  <!-- Add other events similarly -->
+</div>
+
     </div>
     </div>
 
@@ -56,35 +54,29 @@
   </div>
 <script>
   const eventBoxes = document.querySelectorAll('.event');
-  let selectedEvents = JSON.parse(localStorage.getItem('selectedEvents')) || [];
+let selectedEvents = JSON.parse(localStorage.getItem('selectedEvents')) || [];
 
-  // Restore previously selected events visually
-  eventBoxes.forEach(box => {
-    const name = box.dataset.name;
-    if (selectedEvents.some(e => e.name === name)) {
+eventBoxes.forEach(box => {
+  const name = box.dataset.name;
+  const img = box.querySelector('img').src;
+
+  // Restore selection
+  if (selectedEvents.some(e => e.name === name)) {
+    box.classList.add('selected');
+  }
+
+  box.addEventListener('click', () => {
+    if (box.classList.contains('selected')) {
+      box.classList.remove('selected');
+      selectedEvents = selectedEvents.filter(e => e.name !== name);
+    } else {
       box.classList.add('selected');
+      selectedEvents.push({ name, img });
     }
-
-    // Toggle selection on click
-    box.addEventListener('click', () => {
-      const name = box.dataset.name;
-      const img = box.querySelector('img').src;
-
-      if (box.classList.contains('selected')) {
-        // Deselect
-        box.classList.remove('selected');
-        selectedEvents = selectedEvents.filter(e => e.name !== name);
-      } else {
-        // Select
-        box.classList.add('selected');
-        selectedEvents.push({ name, img });
-      }
-
-      // Save updated selections
-      localStorage.setItem('selectedEvents', JSON.stringify(selectedEvents));
-      console.log('Selected events:', selectedEvents);
-    });
+    localStorage.setItem('selectedEvents', JSON.stringify(selectedEvents));
   });
+});
+
 </script>
 
 

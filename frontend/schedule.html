@@ -10,8 +10,8 @@
 <body>
   <div id="nav-bar">
     <a href="home.html" class="nav-link">Home</a>
-    <a href="events.html" class="nav-link">Events</a>
-    <a href="#" class="nav-link current">Schedule</a>
+    <a href="events.html" class="nav-link current">Events</a>
+    <a href="filter.html" class="nav-link">Filter</a>
     <a href="profile.html" class="nav-link">Profile</a>
   </div>
 
@@ -21,11 +21,15 @@
       <p>Here’s your personalized schedule!</p>
     </div>
   </div>
+  
 
   <!-- 👇 This is the container where events will appear -->
   <div class="schedule-container" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 40px;">
   </div>
-
+ <!-- Footer -->
+     <div class="footer">
+      <p>&copy; Demo website made for SBUHacks! Please contacts jillian.calub@stonybrook.edu, katy.ng@stonybrook.edu, yoobin.chang@stonybrook.edu, renee.siu@stonybrook.edu for more information</p>
+    </div>
   <script>
     const selectedEvents = JSON.parse(localStorage.getItem('selectedEvents')) || [];
     const container = document.querySelector('.schedule-container');
@@ -41,5 +45,6 @@
       `).join('');
     }
   </script>
+ 
 </body>
 </html>

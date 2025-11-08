@@ -83,14 +83,4 @@
 }
 
 
-.footer {
-  background-color: var(--red);
-  color: var(--white);
-  text-align: center;
-  padding: 20px 0;
-  position: fixed;      /* fixes it in place */
-  bottom: 0;            /* sticks to bottom */
-  left: 0;              /* full width */
-  width: 100%;
-  z-index: 10;          /* ensures it’s above other elements */
-}
+
