@@ -14,7 +14,6 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Alumni Sans", sans-serif; }
-
     body { min-height: 100vh; display: flex; flex-direction: column; }
 
     /* Navbar */
@@ -31,8 +30,7 @@
     .time-cell { height: 20px; border: 1px solid #ccc; line-height: 20px; text-align: center; font-size: 12px; }
     .cell { height: 20px; border: 1px solid #ccc; }
     .cell.busy { background-color: var(--busy-gray); }
-    .cell.event { background-color: var(--red); color: white; border-radius: 5px; text-align: center; font-size: 12px; }
-    .cell.event img { width: 80px; height: 50px; border-radius: 5px; display: block; margin: 0 auto; }
+    .cell.event { background-color: var(--red); color: white; text-align: center; font-size: 12px; font-weight: bold; }
 
     /* Footer */
     .footer { background-color: var(--red); color: var(--white); text-align: center; padding: 20px; }
@@ -71,7 +69,6 @@
     &copy; Demo website made for SBUHacks! Please contact jillian.calub@stonybrook.edu, katy.ng@stonybrook.edu, yoobin.chang@stonybrook.edu, renee.siu@stonybrook.edu
   </div>
 
-  <!-- Script -->
   <script>
     const calendar = document.getElementById('calendar');
     const days = 7;
@@ -80,6 +77,14 @@
     const cellHeight = 20;
 
     // Generate time slots
+    const weekDates = [];
+    for (let d = 0; d < days; d++) {
+      const today = new Date();
+      today.setDate(today.getDate() + d);
+      const dayStr = today.toISOString().split('T')[0];
+      weekDates.push(dayStr);
+    }
+
     for (let hour = startHour; hour < endHour; hour++) {
       for (let half = 0; half < 2; half++) {
         const minute = half * 30;
@@ -92,21 +97,14 @@
         calendar.appendChild(timeCell);
 
         // Day cells
-        for (let d = 0; d < days; d++) {
+        weekDates.forEach(day => {
           const cell = document.createElement('div');
           cell.classList.add('cell');
           cell.style.height = cellHeight + 'px';
-
-          const today = new Date();
-          const cellDate = new Date(today);
-          cellDate.setDate(today.getDate() + d);
-          const dayStr = cellDate.toISOString().split('T')[0];
-
-          cell.setAttribute('data-day', dayStr);
+          cell.setAttribute('data-day', day);
           cell.setAttribute('data-time', timeStr);
-
           calendar.appendChild(cell);
-        }
+        });
       }
     }
 
@@ -119,7 +117,7 @@
       const endHour = parseInt(to.slice(8,10));
       const endMinute = parseInt(to.slice(10,12));
 
-      while(hour < endHour || (hour === endHour && minute < endMinute)) {
+      while(hour < endHour || (hour === endHour && minute < endMinute)){
         const timeStr = `${String(hour).padStart(2,'0')}:${String(minute).padStart(2,'0')}`;
         const cell = document.querySelector(`.cell[data-day="${day}"][data-time="${timeStr}"]`);
         if(cell) cell.classList.add('busy');
@@ -128,25 +126,19 @@
       }
     });
 
-    // Place events in free slots
-    // Place events in free slots (without images)
-const events = JSON.parse(localStorage.getItem('selectedEvents')) || [];
-events.forEach(event => {
-  for(let d=0; d<days; d++){
-    const today = new Date();
-    const dayDate = new Date(today);
-    dayDate.setDate(today.getDate() + d);
-    const dayStr = dayDate.toISOString().split('T')[0];
-
-    const availableCell = Array.from(document.querySelectorAll(`.cell[data-day="${dayStr}"]:not(.busy):not(.event)`))[0];
-    if(availableCell){
-      availableCell.classList.add('event');
-      availableCell.textContent = event.name; // only show the name
-      break;
-    }
-  }
-});
-
+    // Place events in first available free slot (without images)
+    const events = JSON.parse(localStorage.getItem('selectedEvents')) || [];
+    events.forEach(event => {
+      for (let d = 0; d < days; d++) {
+        const day = weekDates[d];
+        const cell = Array.from(document.querySelectorAll(`.cell[data-day="${day}"]:not(.busy):not(.event)`))[0];
+        if(cell){
+          cell.classList.add('event');
+          cell.textContent = event.name; // Only show name on calendar
+          break;
+        }
+      }
+    });
   </script>
 
 </body>
