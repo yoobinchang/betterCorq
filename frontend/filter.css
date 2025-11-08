@@ -98,6 +98,7 @@
 .calendar-body {
   display: grid;
   grid-template-columns: 60px repeat(7, 1fr);
+  gap: 0;
 }
 
 .time-cell {

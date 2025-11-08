@@ -14,7 +14,7 @@ document.body.addEventListener('mouseup', () => {
   toggleMode = null;
 });
 
-for (let i = 0; i < intervalCount; i++) {
+for (let i = 32; i < intervalCount; i++) {
   let hour = Math.floor(i / 4);
   let minute = (i % 4) * 15;
   let timeStr = `${String(hour).padStart(2,'0')}:${String(minute).padStart(2,'0')}`;
