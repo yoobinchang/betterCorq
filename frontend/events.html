@@ -30,19 +30,19 @@
       <p>These are the events for the week</p>
 
        <div class="event-container">
-        <div class="event">Event 1
+        <div class="event" data-name="Event 1">Event 1
           <br><br>
             <img src="https://www.stonybrook.edu/erp/_images/wolfie.png" alt="Profile" />
         </div>
-        <div class="event">Event 2
+        <div class="event" data-name="Event 2">Event 2
           <br><br>
             <img src="https://www.stonybrook.edu/erp/_images/wolfie.png" alt="Profile" />
         </div>
-        <div class="event">Event 3
+        <div class="event" data-name="Event 3">Event 3
           <br><br>
             <img src="https://www.stonybrook.edu/erp/_images/wolfie.png" alt="Profile" />
         </div>
-        <div class="event">Event 4
+        <div class="event" data-name="Event 4">Event 4
           <br><br>
             <img src="https://www.stonybrook.edu/erp/_images/wolfie.png" alt="Profile" />
         </div>
@@ -54,6 +54,45 @@
 
    
   </div>
+<script>
+  // select all event boxes
+  const eventBoxes = document.querySelectorAll('.event');
+  const selected = new Set();
+
+  eventBoxes.forEach(box => {
+    box.addEventListener('click', () => {
+      const name = box.dataset.name || box.textContent.trim();
+
+      if (box.classList.contains('selected')) {
+        box.classList.remove('selected');
+        selected.delete(name);
+      } else {
+        box.classList.add('selected');
+        selected.add(name);
+      }
+
+      // Log current selection (for debugging)
+      console.log('Selected events:', Array.from(selected));
+
+      // Optional: persist to localStorage so selection stays after refresh
+      localStorage.setItem('selectedEvents', JSON.stringify(Array.from(selected)));
+    });
+  });
+
+  // Optional: on page load, restore persisted selections
+  window.addEventListener('DOMContentLoaded', () => {
+    const persisted = JSON.parse(localStorage.getItem('selectedEvents') || '[]');
+    if (persisted.length) {
+      eventBoxes.forEach(box => {
+        const name = box.dataset.name || box.textContent.trim();
+        if (persisted.includes(name)) {
+          box.classList.add('selected');
+          selected.add(name);
+        }
+      });
+    }
+  });
+</script>
 
 </body>
 </html>
