@@ -65,6 +65,35 @@
   color: var(--black);
 }
 
+.upload-container {
+  display: flex;
+  justify-content: center;
+}
+
+.upload-label {
+  width: 10vw;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: var(--white);
+  color: var(--red);
+  border: 5px solid var(--red);
+  font-size: 1.5vw;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+#file-upload {
+  display: none;
+}
+
+.upload-label:hover {
+  background-color: var(--red);   /* optional hover effect */
+  color: var(--white);            /* optional hover effect */
+}
+
 
 .main-content {
   padding: 20px;

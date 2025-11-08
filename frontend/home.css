@@ -90,7 +90,7 @@
 }
 
 .button-container button {
-  width: 15vw;
+  width: 10vw;
   padding: 15px 30px;
   background-color: var(--white);
   color: var(--red);
