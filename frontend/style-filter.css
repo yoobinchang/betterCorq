@@ -1,0 +1,81 @@
+:root {
+  --nav-bar: #eeeee;
+  --red: rgb(213,32,39);
+  --dark-red: rgb(143,0,0);
+  --white: rgb(255, 255, 255);
+  --black: rgb(0, 0, 0);
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Alumni Sans", sans-serif;
+}
+#nav-bar {
+  background-color: var(--dark-red);
+  display: flex;
+  height: 7vw;
+  justify-content: space-around;
+  align-items: center;
+  line-height: 5vw;
+}
+#nav-bar img{
+    width: 220px;
+    height: 40px;
+}
+#nav-side-bar{
+  position: absolute;
+  margin-left: 150vh;
+  margin-top: 3vh;
+  background-color: var(--red);
+  color: var(--black);
+  border-radius: 20px;
+padding: 20px 40px;  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+
+}
+.nav-link2 {
+  color: var(--black);
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: bold;
+}
+.nav-link {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: bold;
+}
+.nav-link.current {
+  text-decoration: underline;  /* underlines the current page link */
+  font-weight: bold;           /* optional: make it bold */
+  color: var(--white);         /* optional: make color match your theme */
+}
+.nav-link a {
+  color: var(--white);
+  text-decoration: none;
+}
+.content-container {
+  display: flex;
+  height: 50vh;
+  gap: 20px;
+  justify-content: left;
+  align-items: center;
+  background-color: var(--white);
+}
+.left-content {
+  margin-left: 3vh;
+  width: 55vw;
+  padding-top: 50px; /* adds extra space inside the container */
+}
+
+.left-content h3 {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+.left-content p {
+    gap: 8vh;
+    font-size: 22px;
+}
+
