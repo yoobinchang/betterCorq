@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Personalized Schedule</title>
+  <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #bf1922;
+      --med-red: #6b000d;
+      --white: #f2eeee;
+      --busy-gray: #ddd;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Alumni Sans", sans-serif; }
+
+    body { min-height: 100vh; display: flex; flex-direction: column; }
+
+    /* Navbar */
+    .nav-bar-container { display: flex; background-color: var(--red); }
+    .block1 { width: 40vw; background-color: var(--med-red); }
+    .nav-bar { width: 60vw; display: flex; justify-content: space-around; align-items: center; }
+    .nav-link { color: var(--white); text-decoration: none; font-size: 20px; font-weight: bold; }
+    .nav-link.current { text-decoration: underline; }
+
+    /* Calendar */
+    .calendar-container { flex: 1; padding: 20px; overflow-x: auto; }
+    .calendar-header { display: grid; grid-template-columns: 60px repeat(7, 1fr); text-align: center; margin-bottom: 5px; }
+    .calendar-body { display: grid; grid-template-columns: 60px repeat(7, 1fr); }
+    .time-cell { height: 20px; border: 1px solid #ccc; line-height: 20px; text-align: center; font-size: 12px; }
+    .cell { height: 20px; border: 1px solid #ccc; }
+    .cell.busy { background-color: var(--busy-gray); }
+    .cell.event { background-color: var(--red); color: white; border-radius: 5px; text-align: center; font-size: 12px; }
+    .cell.event img { width: 80px; height: 50px; border-radius: 5px; display: block; margin: 0 auto; }
+
+    /* Footer */
+    .footer { background-color: var(--red); color: var(--white); text-align: center; padding: 20px; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="nav-bar-container">
+    <div class="block1"></div>
+    <div class="nav-bar">
+      <a href="home.html" class="nav-link">Home</a>
+      <a href="events.html" class="nav-link">Events</a>
+      <a href="filter.html" class="nav-link">Filter</a>
+      <a href="profile.html" class="nav-link">Profile</a>
+    </div>
+  </div>
+
+  <!-- Calendar Container -->
+  <div class="calendar-container">
+    <div class="calendar-header">
+      <div class="time-label"></div>
+      <div class="day-header">Mon</div>
+      <div class="day-header">Tue</div>
+      <div class="day-header">Wed</div>
+      <div class="day-header">Thu</div>
+      <div class="day-header">Fri</div>
+      <div class="day-header">Sat</div>
+      <div class="day-header">Sun</div>
+    </div>
+    <div class="calendar-body" id="calendar"></div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    &copy; Demo website made for SBUHacks! Please contact jillian.calub@stonybrook.edu, katy.ng@stonybrook.edu, yoobin.chang@stonybrook.edu, renee.siu@stonybrook.edu
+  </div>
+
+  <!-- Script -->
+  <script>
+    const calendar = document.getElementById('calendar');
+    const days = 7;
+    const startHour = 8;
+    const endHour = 20;
+    const cellHeight = 20;
+
+    // Generate time slots
+    for (let hour = startHour; hour < endHour; hour++) {
+      for (let half = 0; half < 2; half++) {
+        const minute = half * 30;
+        const timeStr = `${String(hour).padStart(2,'0')}:${String(minute).padStart(2,'0')}`;
+
+        // Time label
+        const timeCell = document.createElement('div');
+        timeCell.classList.add('time-cell');
+        timeCell.textContent = timeStr;
+        calendar.appendChild(timeCell);
+
+        // Day cells
+        for (let d = 0; d < days; d++) {
+          const cell = document.createElement('div');
+          cell.classList.add('cell');
+          cell.style.height = cellHeight + 'px';
+
+          const today = new Date();
+          const cellDate = new Date(today);
+          cellDate.setDate(today.getDate() + d);
+          const dayStr = cellDate.toISOString().split('T')[0];
+
+          cell.setAttribute('data-day', dayStr);
+          cell.setAttribute('data-time', timeStr);
+
+          calendar.appendChild(cell);
+        }
+      }
+    }
+
+    // Mark busy slots from localStorage
+    const savedAvailability = JSON.parse(localStorage.getItem('userAvailability')) || [];
+    savedAvailability.forEach(({from, to}) => {
+      const day = from.slice(0,4)+'-'+from.slice(4,6)+'-'+from.slice(6,8);
+      let hour = parseInt(from.slice(8,10));
+      let minute = parseInt(from.slice(10,12));
+      const endHour = parseInt(to.slice(8,10));
+      const endMinute = parseInt(to.slice(10,12));
+
+      while(hour < endHour || (hour === endHour && minute < endMinute)) {
+        const timeStr = `${String(hour).padStart(2,'0')}:${String(minute).padStart(2,'0')}`;
+        const cell = document.querySelector(`.cell[data-day="${day}"][data-time="${timeStr}"]`);
+        if(cell) cell.classList.add('busy');
+        minute += 30;
+        if(minute >= 60){ minute = 0; hour +=1; }
+      }
+    });
+
+    // Place events in free slots
+    // Place events in free slots (without images)
+const events = JSON.parse(localStorage.getItem('selectedEvents')) || [];
+events.forEach(event => {
+  for(let d=0; d<days; d++){
+    const today = new Date();
+    const dayDate = new Date(today);
+    dayDate.setDate(today.getDate() + d);
+    const dayStr = dayDate.toISOString().split('T')[0];
+
+    const availableCell = Array.from(document.querySelectorAll(`.cell[data-day="${dayStr}"]:not(.busy):not(.event)`))[0];
+    if(availableCell){
+      availableCell.classList.add('event');
+      availableCell.textContent = event.name; // only show the name
+      break;
+    }
+  }
+});
+
+  </script>
+
+</body>
+</html>
