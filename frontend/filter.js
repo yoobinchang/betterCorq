@@ -1,6 +1,6 @@
 const schedule = document.getElementById('schedule');
 const days = 7;
-const intervalCount = 24 * 4;
+const intervalCount = (24 - 2) * 2 + 1; // 8 AM to 10 PM in 30-min intervals
 const cellHeight = 20;
 
 let isMouseDown = false;
@@ -16,9 +16,9 @@ document.body.addEventListener('mouseup', () => {
 });
 
 // Generate calendar grid
-for (let i = 32; i < intervalCount; i++) {
-  let hour = Math.floor(i / 4);
-  let minute = (i % 4) * 15;
+for (let i = 16; i < intervalCount; i++) {
+  let hour = Math.floor(i / 2);
+  let minute = (i % 2) * 30;
   let timeStr = `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
 
   const timeCell = document.createElement('div');
@@ -150,7 +150,7 @@ function restoreAvailability() {
       const cell = document.querySelector(selector);
       if (cell) cell.classList.add('selected');
 
-      currentMinute += 15;
+      currentMinute += 30;
       if (currentMinute >= 60) {
         currentMinute = 0;
         currentHour += 1;
