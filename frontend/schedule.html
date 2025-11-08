@@ -8,44 +8,38 @@
   <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
   <div id="nav-bar">
-    <img src="https://www.stonybrook.edu/marcom/_images/2015/10/main_logo.jpg" alt="Logo" />
     <a href="home.html" class="nav-link">Home</a>
     <a href="events.html" class="nav-link">Events</a>
-    <a href="filter.html" class="nav-link">Filter</a>
+    <a href="#" class="nav-link current">Schedule</a>
     <a href="profile.html" class="nav-link">Profile</a>
   </div>
 
   <div class="content-container">
     <div class="left-content">
-      <h3>Your Selected Events</h3>
+      <h2>Your Selected Events</h2>
       <p>Here’s your personalized schedule!</p>
-
-      <div id="selected-events" class="event-container"></div>
     </div>
   </div>
 
-  <script>
-    // Retrieve selected events from localStorage
-    const selected = JSON.parse(localStorage.getItem('selectedEvents') || '[]');
-    const container = document.getElementById('selected-events');
+  <!-- 👇 This is the container where events will appear -->
+  <div class="schedule-container" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 40px;">
+  </div>
 
-    if (selected.length === 0) {
-      container.innerHTML = "<p>No events selected yet. Go pick some!</p>";
+  <script>
+    const selectedEvents = JSON.parse(localStorage.getItem('selectedEvents')) || [];
+    const container = document.querySelector('.schedule-container');
+
+    if (selectedEvents.length === 0) {
+      container.innerHTML = '<p>No events selected yet.</p>';
     } else {
-      selected.forEach(event => {
-        // Create event box
-        const div = document.createElement('div');
-        div.classList.add('event');
-        div.innerHTML = `
-          <p>${event.name}</p>
-          <img src="${event.imgSrc}" alt="${event.name}">
-        `;
-        container.appendChild(div);
-      });
+      container.innerHTML = selectedEvents.map(event => `
+        <div class="event" style="background-color: #bf1922; color: white; border-radius: 20px; padding: 20px; text-align: center;">
+          <h3>${event.name}</h3>
+          <img src="${event.img}" alt="${event.name}" style="width: 300px; height: 200px; border-radius: 10px;">
+        </div>
+      `).join('');
     }
   </script>
-
 </body>
 </html>

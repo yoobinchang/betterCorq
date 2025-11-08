@@ -56,36 +56,37 @@
   </div>
 <script>
   const eventBoxes = document.querySelectorAll('.event');
-  let selected = JSON.parse(localStorage.getItem('selectedEvents') || '[]');
+  let selectedEvents = JSON.parse(localStorage.getItem('selectedEvents')) || [];
 
-  // Helper: find if event is selected
-  const isSelected = (name) => selected.some(e => e.name === name);
-
-  // On load: mark already selected events
+  // Restore previously selected events visually
   eventBoxes.forEach(box => {
-    const name = box.dataset.name || box.textContent.trim();
-    const img = box.querySelector('img')?.src || '';
-    if (isSelected(name)) {
+    const name = box.dataset.name;
+    if (selectedEvents.some(e => e.name === name)) {
       box.classList.add('selected');
     }
 
-    // When clicked, toggle selection
+    // Toggle selection on click
     box.addEventListener('click', () => {
-      if (isSelected(name)) {
-        // remove from array
-        selected = selected.filter(e => e.name !== name);
+      const name = box.dataset.name;
+      const img = box.querySelector('img').src;
+
+      if (box.classList.contains('selected')) {
+        // Deselect
         box.classList.remove('selected');
+        selectedEvents = selectedEvents.filter(e => e.name !== name);
       } else {
-        // add new
-        selected.push({ name, imgSrc: img });
+        // Select
         box.classList.add('selected');
+        selectedEvents.push({ name, img });
       }
 
-      // Save updates to localStorage
-      localStorage.setItem('selectedEvents', JSON.stringify(selected));
+      // Save updated selections
+      localStorage.setItem('selectedEvents', JSON.stringify(selectedEvents));
+      console.log('Selected events:', selectedEvents);
     });
   });
 </script>
+
 
 
 </body>
