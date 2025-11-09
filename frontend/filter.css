@@ -29,7 +29,7 @@ body {
 .block1 {
   height: 7vw;
   width: 40vw;
-  background-color: var(--dark-red);
+  background-color: var(--med-red);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -52,7 +52,7 @@ body {
   justify-content: flex-end;
   height: 100%;
   width: 15vw;
-  background-color: var(--med-red);
+  background-color: var(--dark-red);
 }
 
 .nav-bar {
