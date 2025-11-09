@@ -32,6 +32,28 @@ document.getElementById('file-upload').addEventListener('change', (event) => {
   reader.readAsText(file);
 });
 
+function showCustomAlert(message) {
+  const alertBox = document.getElementById("custom-alert");
+  alertBox.textContent = message;
+
+  // Reset classes first
+  alertBox.classList.remove("hidden", "visible");
+
+  // Force reflow to restart animation
+  void alertBox.offsetWidth;
+
+  // Show the alert
+  alertBox.classList.add("visible");
+
+  // Hide after 3 seconds
+  setTimeout(() => {
+    alertBox.classList.remove("visible");
+    alertBox.classList.add("hidden");
+  }, 3000);
+}
+
+
+
 
 // Generate calendar grid
 for (let i = 16; i < intervalCount; i++) {
@@ -176,6 +198,20 @@ function restoreAvailability() {
 }
 
 restoreAvailability();
+
+document.querySelectorAll(".clear-day").forEach(button => {
+  button.addEventListener("click", () => {
+    const dayOffset = parseInt(button.dataset.day); // 0 = today, 1 = tomorrow, etc.
+    const targetDate = new Date();
+    targetDate.setDate(targetDate.getDate() + dayOffset);
+    const dayStr = targetDate.toISOString().split("T")[0]; // "YYYY-MM-DD"
+
+    const allCells = document.querySelectorAll(`.cell[data-day='${dayStr}']`);
+    allCells.forEach(cell => cell.classList.remove("selected"));
+  });
+});
+
+
 
 // Clear button logic
 document.getElementById("clear-button").addEventListener("click", () => {

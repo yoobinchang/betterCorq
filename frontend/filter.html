@@ -11,7 +11,12 @@
 
   <!-- Navigation Bar -->
    <div class="nav-bar-container">
-    <div class="block1"></div>
+    <div class="block1">
+      <a href="home.html" class="logo-link">
+        <img src="BetterCorq_logo.png" alt="Logo" />
+      </a>
+      <div class="block2">  </div>
+    </div>
     <div class="nav-bar">
         <a href="home.html" class="nav-link">Home</a>
         <a href="events.html" class="nav-link">Events</a>
@@ -29,13 +34,27 @@
 
 <div class="upload-container">
   <label for="file-upload" class="upload-label">Upload Schedule</label>
-  <input type="file" id="file-upload" accept=".txt,.csv,.ics,.json" />
+  <div id="custom-alert" class="custom-alert hidden"></div>
+  <input type="file" id="file-upload" accept=".png" />
 </div>
 
 
 
 <!-- Main Content -->
 <div class="calendar-container">
+
+<div class="calendar-clear-row">
+  <div class="clear-spacer"></div>
+  <button class="clear-day" data-day="0">✕</button>
+  <button class="clear-day" data-day="1">✕</button>
+  <button class="clear-day" data-day="2">✕</button>
+  <button class="clear-day" data-day="3">✕</button>
+  <button class="clear-day" data-day="4">✕</button>
+  <button class="clear-day" data-day="5">✕</button>
+  <button class="clear-day" data-day="6">✕</button>
+</div>
+
+
   <div class="calendar-header">
     <div class="time-label"></div>
     <div class="day-header">Mon</div>
