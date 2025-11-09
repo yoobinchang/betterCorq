@@ -1,61 +1,72 @@
+// ====================
+// 📅 CALENDAR SETUP
+// ====================
 const schedule = document.getElementById('schedule');
 const days = 7;
-const intervalCount = (24 - 2) * 2 + 1; // 8 AM to 10 PM in 30-min intervals
+const intervalCount = (24 - 2) * 2 + 1; // 8 AM → 10 PM (30-min intervals)
 const cellHeight = 20;
-
 let isMouseDown = false;
 let toggleMode = null;
 
-// Mouse tracking
-document.body.addEventListener('mousedown', () => {
-  isMouseDown = true;
-});
+// Track mouse for click & drag selection
+document.body.addEventListener('mousedown', () => (isMouseDown = true));
 document.body.addEventListener('mouseup', () => {
   isMouseDown = false;
   toggleMode = null;
 });
 
-//upload button
-document.getElementById('file-upload').addEventListener('change', (event) => {
+// ====================
+// 📤 FILE UPLOAD (AI extraction)
+// ====================
+document.getElementById('file-upload').addEventListener('change', async (event) => {
   const file = event.target.files[0];
   if (!file) return;
 
-  const reader = new FileReader();
-  reader.onload = function (e) {
-    const content = e.target.result;
-    console.log("Uploaded file content:", content);
+  const formData = new FormData();
+  formData.append("file", file);
 
-    // TODO: Use AI or logic to extract free time from `content`
-    // For now, just show a placeholder alert
-    showCustomAlert("File uploaded! We'll extract your availability soon.");
-  };
-  reader.readAsText(file);
+  try {
+    showCustomAlert("📤 Uploading schedule... please wait");
+
+    // ✅ Flask route prefix updated: /api/ai/upload-schedule
+    const response = await fetch("http://127.0.0.1:5000/api/ai/upload-schedule", {
+      method: "POST",
+      body: formData,
+    });
+
+    if (!response.ok) throw new Error("Upload failed");
+    const data = await response.json();
+
+    showCustomAlert("✅ Schedule processed! Highlighting your free time...");
+
+    if (data.data) {
+      localStorage.setItem("aiFreeTime", JSON.stringify(data.data));  // ✅ save AI result
+      highlightFreeTime(data.data);
+    }
+  } catch (err) {
+    console.error(err);
+    showCustomAlert("❌ Failed to upload schedule.");
+  }
 });
 
+// ====================
+// ⚠️ CUSTOM ALERT BOX
+// ====================
 function showCustomAlert(message) {
   const alertBox = document.getElementById("custom-alert");
   alertBox.textContent = message;
-
-  // Reset classes first
   alertBox.classList.remove("hidden", "visible");
-
-  // Force reflow to restart animation
-  void alertBox.offsetWidth;
-
-  // Show the alert
+  void alertBox.offsetWidth; // restart animation
   alertBox.classList.add("visible");
-
-  // Hide after 3 seconds
   setTimeout(() => {
     alertBox.classList.remove("visible");
     alertBox.classList.add("hidden");
   }, 3000);
 }
 
-
-
-
-// Generate calendar grid
+// ====================
+// 🗓 CALENDAR GRID GENERATION
+// ====================
 for (let i = 16; i < intervalCount; i++) {
   let hour = Math.floor(i / 2);
   let minute = (i % 2) * 30;
@@ -86,16 +97,16 @@ for (let i = 16; i < intervalCount; i++) {
     });
 
     cell.addEventListener('mouseover', () => {
-      if (isMouseDown && toggleMode) {
-        cell.classList[toggleMode]('selected');
-      }
+      if (isMouseDown && toggleMode) cell.classList[toggleMode]('selected');
     });
 
     schedule.appendChild(cell);
   }
 }
 
-// Format selected times
+// ====================
+// 🧮 SELECTED TIME EXTRACTION
+// ====================
 function getSelectedTimes() {
   const selectedCells = Array.from(document.querySelectorAll('.cell.selected'));
 
@@ -103,119 +114,138 @@ function getSelectedTimes() {
     const day = cell.getAttribute('data-day');
     const time = cell.getAttribute('data-time');
     return { day, time };
-  }).filter(t => t.day && t.time).sort((a, b) => {
-    const aKey = `${a.day}${a.time}`;
-    const bKey = `${b.day}${b.time}`;
-    return aKey.localeCompare(bKey);
-  });
+  }).filter(t => t.day && t.time).sort((a, b) => `${a.day}${a.time}`.localeCompare(`${b.day}${b.time}`));
 
   const grouped = [];
   let start = null;
-  let end = null;
 
   for (let i = 0; i < times.length; i++) {
     const current = times[i];
     const next = times[i + 1];
-
     if (!start) start = current;
-
-    if (!current.time || !/^\d{2}:\d{2}$/.test(current.time)) {
-      console.warn("Invalid time format:", current.time);
-      continue;
-    }
 
     const [h, m] = current.time.split(':').map(Number);
     const nextTime = next?.time?.split(':').map(Number);
     const nextDay = next?.day;
-
-    const isConsecutive =
-      next &&
-      current.day === nextDay &&
-      nextTime[0] * 60 + nextTime[1] === h * 60 + m + 30; // 30-min slots
+    const isConsecutive = next && current.day === nextDay && nextTime[0] * 60 + nextTime[1] === h * 60 + m + 30;
 
     if (!isConsecutive) {
-      end = current;
-      grouped.push({ start, end });
+      grouped.push({ start, end: current });
       start = null;
     }
   }
 
-  const formatted = grouped.map(({ start, end }) => {
-    const format = (d, t) => {
-      const [year, month, day] = d.split('-');
-      const [hour, minute] = t.split(':');
-      return `${year}${month}${day}${hour}${minute}`; // no "T"
-    };
-    return {
-      from: format(start.day, start.time),
-      to: format(end.day, end.time)
-    };
-  });
-
-  return formatted;
+  return grouped.map(({ start, end }) => ({
+    day: start.day,
+    from: start.time,
+    to: end.time
+  }));
 }
 
-// Save button logic
-document.getElementById('save-button').addEventListener('click', () => {
+// ====================
+// 💾 SAVE BUTTON → Flask
+// ====================
+document.getElementById('save-button').addEventListener('click', async () => {
   const selectedTimes = getSelectedTimes();
   localStorage.setItem('userAvailability', JSON.stringify(selectedTimes));
-  console.log("Saved availability:", selectedTimes);
-  alert("Your availability has been saved!");
+
+  try {
+    // ✅ Flask route prefix updated: /api/schedule/save-free-time
+    const response = await fetch("http://127.0.0.1:5000/api/schedule/save-free-time", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(selectedTimes),
+    });
+
+    if (response.ok) showCustomAlert("✅ Your schedule has been saved!");
+    else showCustomAlert("⚠️ Server error while saving schedule.");
+  } catch (error) {
+    console.error(error);
+    showCustomAlert("❌ Failed to connect to server.");
+  }
 });
 
-// Restore saved availability
+// ====================
+// 🔄 RESTORE LOCAL DATA
+// ====================
 function restoreAvailability() {
+  const aiFree = localStorage.getItem("aiFreeTime");
+  if (aiFree) highlightFreeTime(JSON.parse(aiFree));
+
   const saved = localStorage.getItem('userAvailability');
   if (!saved) return;
-
   const availability = JSON.parse(saved);
-  availability.forEach(({ from, to }) => {
-    const day = from.slice(0, 4) + '-' + from.slice(4, 6) + '-' + from.slice(6, 8);
-    const startHour = parseInt(from.slice(8, 10));
-    const startMinute = parseInt(from.slice(10, 12));
-    const endHour = parseInt(to.slice(8, 10));
-    const endMinute = parseInt(to.slice(10, 12));
 
-    let currentHour = startHour;
-    let currentMinute = startMinute;
+  availability.forEach(({ day, from, to }) => {
+    let [h, m] = from.split(':').map(Number);
+    const [endH, endM] = to.split(':').map(Number);
 
-    while (
-      currentHour < endHour ||
-      (currentHour === endHour && currentMinute < endMinute)
-    ) {
-      const timeStr = `${String(currentHour).padStart(2, '0')}:${String(currentMinute).padStart(2, '0')}`;
-      const selector = `.cell[data-day="${day}"][data-time="${timeStr}"]`;
-      const cell = document.querySelector(selector);
+    while (h < endH || (h === endH && m < endM)) {
+      const timeStr = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+      const cell = document.querySelector(`.cell[data-day="${day}"][data-time="${timeStr}"]`);
       if (cell) cell.classList.add('selected');
-
-      currentMinute += 30;
-      if (currentMinute >= 60) {
-        currentMinute = 0;
-        currentHour += 1;
-      }
+      m += 30;
+      if (m >= 60) { m = 0; h++; }
     }
   });
 }
-
 restoreAvailability();
 
+// ====================
+// 🧹 CLEAR BUTTONS
+// ====================
 document.querySelectorAll(".clear-day").forEach(button => {
   button.addEventListener("click", () => {
-    const dayOffset = parseInt(button.dataset.day); // 0 = today, 1 = tomorrow, etc.
+    const dayOffset = parseInt(button.dataset.day);
     const targetDate = new Date();
     targetDate.setDate(targetDate.getDate() + dayOffset);
-    const dayStr = targetDate.toISOString().split("T")[0]; // "YYYY-MM-DD"
-
-    const allCells = document.querySelectorAll(`.cell[data-day='${dayStr}']`);
-    allCells.forEach(cell => cell.classList.remove("selected"));
+    const dayStr = targetDate.toISOString().split("T")[0];
+    document.querySelectorAll(`.cell[data-day='${dayStr}']`)
+      .forEach(cell => cell.classList.remove("selected"));
   });
 });
 
-
-
-// Clear button logic
 document.getElementById("clear-button").addEventListener("click", () => {
-  const selectedCells = document.querySelectorAll(".cell.selected");
-  selectedCells.forEach(cell => cell.classList.remove("selected"));
+  document.querySelectorAll(".cell.selected").forEach(cell => cell.classList.remove("selected"));
+  localStorage.removeItem("userAvailability");
+  localStorage.removeItem("aiFreeTime");
+  showCustomAlert("🧹 Cleared all selections.");
 });
 
+// ====================
+// 🎨 HIGHLIGHT FREE TIME (AI result → paint on grid)
+// ====================
+
+function dateStrForWeekday(dayName) {
+  const shortDays = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  for (let offset = 0; offset < 7; offset++) {
+    const d = new Date();
+    d.setDate(d.getDate() + offset);
+    if (shortDays[d.getDay()] === dayName) {
+      return d.toISOString().split("T")[0];
+    }
+  }
+  return null;
+}
+
+function highlightFreeTime(freeTimeData) {
+  Object.entries(freeTimeData).forEach(([dayName, intervals]) => {
+    const dayStr = dateStrForWeekday(dayName);
+    if (!dayStr) return;
+
+    intervals.forEach(([start, end]) => {
+      let [h, m] = start.split(':').map(Number);
+      const [endH, endM] = end.split(':').map(Number);
+
+      while (h < endH || (h === endH && m < endM)) {
+        const timeStr = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+        const sel = `.cell[data-day="${dayStr}"][data-time="${timeStr}"]`;
+        const cell = document.querySelector(sel);
+        if (cell) cell.classList.add('selected');
+
+        m += 30;
+        if (m >= 60) { m = 0; h++; }
+      }
+    });
+  });
+}
