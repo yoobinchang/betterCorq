@@ -1,6 +1,5 @@
-// Function to format the date and time
+// Format date/time
 function formatDateTime(dateTimeStr) {
-    // If the date string doesn't include a date (only has time), return as is
     if (!dateTimeStr.includes('2025')) {
         return dateTimeStr;
     }
@@ -15,7 +14,7 @@ function formatDateTime(dateTimeStr) {
     });
 }
 
-// Function to load events from the JSON file
+// Load events
 async function loadEvents() {
     try {
         const response = await fetch('/backend/data/events_est.json');
@@ -28,31 +27,43 @@ async function loadEvents() {
     }
 }
 
-// Function to display events
+// Display events
 function displayEvents(events) {
     const container = document.querySelector('.event-container');
-    container.innerHTML = ''; // Clear existing content
+    container.innerHTML = '';
 
     events.forEach(event => {
         const eventDiv = document.createElement('div');
         eventDiv.className = 'event';
         eventDiv.dataset.name = event.name;
 
-        // Create the event content
-        eventDiv.innerHTML = `
-            <strong>${event.name}</strong><br>
-            <span class="event-time">${formatDateTime(event.start)} - ${event.end}</span><br>
-            <span class="event-location">${event.location}</span><br>
-            <span class="event-org">${event.organization}</span>
-            <img src="https://www.stonybrook.edu/erp/_images/wolfie.png" alt="Event">
-        `;
+        // Event name container
+        const nameContainer = document.createElement('div');
+        nameContainer.className = 'event-name-container';
 
-        // Check if this event is already in the schedule
+        const eventName = document.createElement('h2');
+        eventName.className = 'event-name';
+        eventName.textContent = event.name;
+
+        nameContainer.appendChild(eventName);
+        eventDiv.appendChild(nameContainer);
+
+        // Inner box with details
+        const innerBox = document.createElement('div');
+        innerBox.className = 'inner-box';
+        innerBox.innerHTML = `
+            <p><strong>Start:</strong> ${formatDateTime(event.start)}</p>
+            <p><strong>End:</strong> ${event.end}</p>
+            <p><strong>Location:</strong> ${event.location}</p>
+            <p><strong>Organization:</strong> ${event.organization}</p>
+        `;
+        eventDiv.appendChild(innerBox);
+
+        // Selection logic
         if (selectedEvents.some(e => e.name === event.name)) {
             eventDiv.classList.add('selected');
         }
 
-        // Add click event listener for selection
         eventDiv.addEventListener('click', () => {
             if (eventDiv.classList.contains('selected')) {
                 eventDiv.classList.remove('selected');
@@ -74,8 +85,8 @@ function displayEvents(events) {
     });
 }
 
-// Initialize selected events from localStorage
+// Initialize selected events
 let selectedEvents = JSON.parse(localStorage.getItem('selectedEvents')) || [];
 
-// Load events when the page loads
+// Load events on page load
 document.addEventListener('DOMContentLoaded', loadEvents);
