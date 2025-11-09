@@ -60,7 +60,7 @@ calendar_json = reasoning_response.json()["output"][0]["content"][0]["text"]
 print(calendar_json)
 
 
-    print("🚀 Sending request to OpenRouter API...")
+print("🚀 Sending request to OpenRouter API...")
 
     # === Send request ===
     response = requests.post(
