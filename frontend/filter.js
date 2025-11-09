@@ -32,6 +32,28 @@ document.getElementById('file-upload').addEventListener('change', (event) => {
   reader.readAsText(file);
 });
 
+function showCustomAlert(message) {
+  const alertBox = document.getElementById("custom-alert");
+  alertBox.textContent = message;
+
+  // Reset classes first
+  alertBox.classList.remove("hidden", "visible");
+
+  // Force reflow to restart animation
+  void alertBox.offsetWidth;
+
+  // Show the alert
+  alertBox.classList.add("visible");
+
+  // Hide after 3 seconds
+  setTimeout(() => {
+    alertBox.classList.remove("visible");
+    alertBox.classList.add("hidden");
+  }, 3000);
+}
+
+
+
 
 // Generate calendar grid
 for (let i = 16; i < intervalCount; i++) {

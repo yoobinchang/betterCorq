@@ -119,6 +119,32 @@ body {
   display: none;
 }
 
+.custom-alert {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--dark-red);
+  opacity: 50%;
+  color: var(--white);
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-size: 1.2vw;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  transition: opacity 0.3s ease;
+}
+
+.custom-alert.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.custom-alert.visible {
+  opacity: 0.8;
+}
+
+
 .upload-label:hover {
   background-color: var(--red);   /* optional hover effect */
   color: var(--white);            /* optional hover effect */
