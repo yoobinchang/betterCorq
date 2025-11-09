@@ -24,48 +24,43 @@ def extract_schedule_from_image(file):
         "X-Title": "betterCorq AI Schedule Extractor"
     }
 
-    payload = {
-        "model": "gpt-4o",
-        "messages": [
+    import requests
+
+# 1️⃣ Step 1: Use a vision-capable model for OCR
+image_path = "schedule.jpg"
+ocr_response = requests.post(
+    "https://api.openai.com/v1/responses",
+    headers={"Authorization": f"Bearer {API_KEY}"},
+    json={
+        "model": "gpt-4o-mini",  # or "gpt-4o" for best results
+        "input": [
             {
                 "role": "user",
                 "content": [
-                    {
-                        "type": "text",
-                        "text": (
-                            "You are analyzing a weekly university schedule image. "
-                            "Each green or colored block in the table represents one class (a busy period). "
-                            "Your task is to extract only the busy times from each block.\n\n"
-                            "INSTRUCTIONS:\n"
-                            "1. For every visible class block, read the start and end time written inside it (e.g., '9:30AM - 10:50AM').\n"
-                            "2. Identify which weekday column the block belongs to (Mon, Tue, Wed, Thu, or Fri).\n"
-                            "3. Convert all 12-hour times with AM/PM into 24-hour format (HH:MM). Examples:\n"
-                            "   - 9:30AM → 09:30\n"
-                            "   - 10:50AM → 10:50\n"
-                            "   - 3:30PM → 15:30\n"
-                            "   - 4:50PM → 16:50\n"
-                            "4. Output ONLY valid JSON, structured exactly like this:\n"
-                            "{\n"
-                            "  'Mon': [['09:30','10:50'], ['14:00','14:55']],\n"
-                            "  'Tue': [['12:30','13:45']],\n"
-                            "  'Wed': [],\n"
-                            "  'Thu': [['09:30','10:50']],\n"
-                            "  'Fri': []\n"
-                            "}\n\n"
-                            "RULES:\n"
-                            "- Every block represents a busy time (class period). Collect all of them.\n"
-                            "- Do NOT include text like course names or rooms, only time ranges.\n"
-                            "- Do NOT guess; if a time is unreadable, skip that block.\n"
-                            "- Ensure the output is strictly valid JSON and uses 24-hour time.\n"
-                        )
-                    },
-                    {"type": "image", "image_base64": img_base64}
-                ]
+                    {"type": "input_text", "text": "Extract all class names, days, and times from this image."},
+                    {"type": "input_image", "image_url": f"file://{image_path}"}
+                ],
             }
-        ]
-    }
+        ],
+    },
+)
+schedule_text = ocr_response.json()["output"][0]["content"][0]["text"]
 
-    print("🚀 Sending request to OpenRouter API...")
+# 2️⃣ Step 2: Use a reasoning model to find free time
+reasoning_response = requests.post(
+    "https://api.openai.com/v1/responses",
+    headers={"Authorization": f"Bearer {API_KEY}"},
+    json={
+        "model": "polaris-alpha",  # or "kimi-k2-thinking" / "gpt-4o"
+        "input": f"Here is my school schedule:\n{schedule_text}\n\nFind all my free periods and format them as a calendar JSON."
+    },
+)
+
+calendar_json = reasoning_response.json()["output"][0]["content"][0]["text"]
+print(calendar_json)
+
+
+print("🚀 Sending request to OpenRouter API...")
 
     # === Send request ===
     response = requests.post(
