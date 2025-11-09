@@ -29,61 +29,39 @@ async function loadEvents() {
 
 // Display events
 function displayEvents(events) {
-    const container = document.querySelector('.event-container');
-    container.innerHTML = '';
+  const container = document.querySelector('.event-container');
+  container.innerHTML = '';
 
-    events.forEach(event => {
-        const eventDiv = document.createElement('div');
-        eventDiv.className = 'event';
-        eventDiv.dataset.name = event.name;
+  // Load free time ranges from localStorage
+  const freeTimes = JSON.parse(localStorage.getItem("userAvailability")) || [];
 
-        // Event name container
-        const nameContainer = document.createElement('div');
-        nameContainer.className = 'event-name-container';
+  // Only keep events that overlap with free time
+  const filteredEvents = events.filter(event => eventFitsFreeTime(event, freeTimes, 15));
 
-        const eventName = document.createElement('h2');
-        eventName.className = 'event-name';
-        eventName.textContent = event.name;
-
-        nameContainer.appendChild(eventName);
-        eventDiv.appendChild(nameContainer);
-
-        // Inner box with details
-        const innerBox = document.createElement('div');
-        innerBox.className = 'inner-box';
-        innerBox.innerHTML = `
-            <p><strong>Start:</strong> ${formatDateTime(event.start)}</p>
-            <p><strong>End:</strong> ${event.end}</p>
-            <p><strong>Location:</strong> ${event.location}</p>
-            <p><strong>Organization:</strong> ${event.organization}</p>
-        `;
-        eventDiv.appendChild(innerBox);
-
-        // Selection logic
-        if (selectedEvents.some(e => e.name === event.name)) {
-            eventDiv.classList.add('selected');
-        }
-
-        eventDiv.addEventListener('click', () => {
-            if (eventDiv.classList.contains('selected')) {
-                eventDiv.classList.remove('selected');
-                selectedEvents = selectedEvents.filter(e => e.name !== event.name);
-            } else {
-                eventDiv.classList.add('selected');
-                selectedEvents.push({
-                    name: event.name,
-                    start: event.start,
-                    end: event.end,
-                    location: event.location,
-                    organization: event.organization
-                });
-            }
-            localStorage.setItem('selectedEvents', JSON.stringify(selectedEvents));
-        });
-
-        container.appendChild(eventDiv);
-    });
+  filteredEvents.forEach(event => {
+    // ... your existing eventDiv creation code ...
+  });
 }
+
+
+// Check if an event overlaps with free time (with tolerance)
+function eventFitsFreeTime(event, freeTimes, toleranceMinutes = 15) {
+  const eventStart = new Date(event.start);
+  const eventEnd   = new Date(event.end);
+
+  return freeTimes.some(free => {
+    const freeStart = new Date(`${free.day}T${free.from}:00`);
+    const freeEnd   = new Date(`${free.day}T${free.to}:00`);
+
+    // Apply tolerance: extend free time window slightly
+    const freeStartTol = new Date(freeStart.getTime() - toleranceMinutes * 60000);
+    const freeEndTol   = new Date(freeEnd.getTime() + toleranceMinutes * 60000);
+
+    // Overlap condition: event and free time intersect
+    return eventStart < freeEndTol && eventEnd > freeStartTol;
+  });
+}
+
 
 // Initialize selected events
 let selectedEvents = JSON.parse(localStorage.getItem('selectedEvents')) || [];
