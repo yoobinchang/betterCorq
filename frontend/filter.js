@@ -177,6 +177,20 @@ function restoreAvailability() {
 
 restoreAvailability();
 
+document.querySelectorAll(".clear-day").forEach(button => {
+  button.addEventListener("click", () => {
+    const dayOffset = parseInt(button.dataset.day); // 0 = today, 1 = tomorrow, etc.
+    const targetDate = new Date();
+    targetDate.setDate(targetDate.getDate() + dayOffset);
+    const dayStr = targetDate.toISOString().split("T")[0]; // "YYYY-MM-DD"
+
+    const allCells = document.querySelectorAll(`.cell[data-day='${dayStr}']`);
+    allCells.forEach(cell => cell.classList.remove("selected"));
+  });
+});
+
+
+
 // Clear button logic
 document.getElementById("clear-button").addEventListener("click", () => {
   const selectedCells = document.querySelectorAll(".cell.selected");

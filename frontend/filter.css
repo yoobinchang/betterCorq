@@ -124,6 +124,33 @@ body {
   color: var(--white);            /* optional hover effect */
 }
 
+.calendar-clear-row {
+  display: grid;
+  grid-template-columns: 60px repeat(7, 1fr); /* aligns with calendar grid */
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.clear-spacer {
+  height: 100%;
+  background-color: transparent;
+}
+
+
+.clear-day {
+  background: none;
+  border: none;
+  color: var(--red);
+  font-size: 1.5vw;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.clear-day:hover {
+  color: var(--med-red);
+  font-weight: bold;
+}
+
 .day-header {
   border-left: 1px solid #ccc;
   padding: 5px 0;
