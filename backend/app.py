@@ -1,32 +1,35 @@
 # backend/app.py
 from flask import Flask
-from routes.ai_routes import ai_bp
-from routes.event_routes import event_bp
-from routes.schedule_routes import schedule_bp
+from flask_cors import CORS
 
-# create Flask app
+# === Import Blueprints ===
+from routes.ai_routes import ai_bp          # AI image upload + free-time preview
+from routes.schedule_routes import schedule_bp  # Save free time & match events
+from routes.event_routes import event_bp    # Fetch/recommend events
+
+# === Create Flask App ===
 app = Flask(__name__)
+CORS(app)  # ✅ Allow frontend (e.g., localhost:3000 / 5173)
 
-# Register Blueprints
-# Each route file is defined separately and imported here
-app.register_blueprint(ai_bp)
-app.register_blueprint(event_bp)
-app.register_blueprint(schedule_bp)
+# === Register Blueprints with prefixes ===
+app.register_blueprint(ai_bp, url_prefix="/api/ai")
+app.register_blueprint(schedule_bp, url_prefix="/api/schedule")
+app.register_blueprint(event_bp, url_prefix="/api/events")
 
-# Health check route
+# === Root route (Health Check) ===
 @app.route("/")
 def home():
+    """Simple health check route to confirm backend is live."""
     return {
         "message": "✅ betterCorq backend is running",
         "available_routes": {
-            "/upload-schedule": "POST - Upload schedule image for AI analysis",
-            "/get-schedule": "GET - Get the current saved schedule",
-            "/get-events": "GET - Return all campus events",
-            "/recommend-events": "GET - Recommend events based on free time"
+            "POST /api/ai/upload-schedule": "Upload schedule image → AI extract → free time preview",
+            "POST /api/schedule/save-free-time": "Save final user-selected free time",
+            "GET  /api/schedule/generate-matched-events": "Generate events that fit user free time",
+            "GET  /api/events/recommend": "Fetch recommended events (auto-update)"
         }
     }
 
-# Run Flask
+# === Run Flask ===
 if __name__ == "__main__":
-    # debug=True enables auto-reload when code changes
     app.run(debug=True, port=5000)

@@ -1,62 +1,102 @@
-# load event data, matching algorithm that suggests events based on user's free time
-import json, os
-from datetime import datetime
-from utils.time_utils import calculate_free_time, is_within_tolerance
+import json
+import os
+import requests
+from datetime import datetime, timedelta
+import pytz
 
 EVENTS_PATH = "backend/data/events_est.json"
-SCHEDULE_PATH = "backend/data/schedule.json"
 
-def load_events():
-    """Load all campus events"""
-    if not os.path.exists(EVENTS_PATH):
-        return []
-    with open(EVENTS_PATH, "r", encoding="utf-8") as f:
+def load_json(path):
+    if not os.path.exists(path):
+        return {}
+    with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
-    
-def get_all_events():
-    """Return all events from the dataset"""
-    return load_events()
 
+def str_to_time(s):
+    return datetime.strptime(s, "%H:%M").time()
 
-def recommend_events(events, schedule_data, selected_days, tolerance):
-    """
-    Recommend events that fit within user's free time,
-    using user-defined tolerance (in minutes).
-    """
-    free_times = calculate_free_time(schedule_data)
-    recommended = []
+# === Fetch latest CORQ events ===
+def fetch_events_from_corq():
+    """Fetch current events from CORQ (Stony Brook Engage API) and save locally."""
+    url = "https://stonybrook.campuslabs.com/engage/api/discovery/event/search?endsAfter=2025-11-06T00:00:00Z&take=200&sort=startsOn&order=ascending"
+    headers = {
+        "accept": "application/json",
+        "user-agent": "Mozilla/5.0",
+        "referer": "https://stonybrook.campuslabs.com/engage/"
+    }
+    eastern = pytz.timezone("US/Eastern")
+
+    try:
+        res = requests.get(url, headers=headers)
+        if res.status_code != 200:
+            print(f"❌ Failed to fetch data: {res.status_code}")
+            return []
+
+        data = res.json()
+        events = data.get("value", [])
+        print(f"✅ {len(events)} events fetched from CORQ")
+
+        converted = []
+        for e in events:
+            start_utc = e.get("startsOn")
+            end_utc = e.get("endsOn")
+
+            if not start_utc or not end_utc:
+                continue
+
+            start_dt = datetime.fromisoformat(start_utc.replace("Z", "+00:00")).astimezone(eastern)
+            end_dt = datetime.fromisoformat(end_utc.replace("Z", "+00:00")).astimezone(eastern)
+
+            converted.append({
+                "name": e.get("name"),
+                "start": start_dt.strftime("%Y-%m-%d %I:%M %p EST"),
+                "end": end_dt.strftime("%I:%M %p EST"),
+                "location": e.get("location"),
+                "organization": e.get("organizationName")
+            })
+
+        with open(EVENTS_PATH, "w", encoding="utf-8") as f:
+            json.dump(converted, f, ensure_ascii=False, indent=2)
+
+        print(f"💾 Saved {len(converted)} events → {EVENTS_PATH}")
+        return converted
+
+    except Exception as e:
+        print(f"⚠️ Error while fetching events: {e}")
+        return []
+
+# === Filter events based on Free Time ===
+def filter_events_by_free_time(events, free_time):
+    """Return events that fit into user's free time during the next 7 days."""
+    est = pytz.timezone("US/Eastern")
+    now = datetime.now(est)
+    end_range = (now + timedelta(days=7)).replace(hour=22, minute=0, second=0, microsecond=0)
+
+    matched = []
+    weekday_map = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
     for e in events:
-        day = e["day"]
-        if day not in selected_days:
-            continue  # skip unselected days
+        start_str = e.get("start")
+        end_str = e.get("end")
 
-        for free_start, free_end in free_times.get(day, []):
-            if is_within_tolerance(e["start"], free_start, free_end, tolerance):
-                recommended.append(e)
+        try:
+            start_dt = datetime.strptime(start_str, "%Y-%m-%d %I:%M %p EST")
+            end_dt = datetime.strptime(end_str, "%I:%M %p EST")
+            end_dt = start_dt.replace(hour=end_dt.hour, minute=end_dt.minute)
+        except Exception:
+            continue
+
+        if not (now <= start_dt <= end_range):
+            continue
+
+        weekday = weekday_map[start_dt.weekday()]
+        event_start, event_end = start_dt.time(), end_dt.time()
+
+        for interval in free_time.get(weekday, []):
+            free_start, free_end = str_to_time(interval[0]), str_to_time(interval[1])
+            if free_start <= event_start and event_end <= free_end:
+                matched.append(e)
                 break
 
-    return recommended
-
-    # Simple matching algorithm: recommend events that don’t overlap
-    recommended = []
-    for event in events:
-        event_day = event.get("day")
-        event_start = datetime.strptime(event["start"], "%Y-%m-%d %H:%M:%S")
-        event_end = datetime.strptime(event["end"], "%Y-%m-%d %H:%M:%S")
-
-        conflict = False
-        for busy in busy_times:
-            if busy["day"] == event_day:
-                busy_start = datetime.strptime(busy["start"], "%H:%M")
-                busy_end = datetime.strptime(busy["end"], "%H:%M")
-
-                # Check time overlap
-                if busy_start <= event_start.time() <= busy_end or busy_start <= event_end.time() <= busy_end:
-                    conflict = True
-                    break
-
-        if not conflict:
-            recommended.append(event)
-
-    return recommended
+    print(f"✅ Found {len(matched)} available events.")
+    return matched
