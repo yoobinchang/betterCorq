@@ -24,43 +24,7 @@ def extract_schedule_from_image(file):
         "X-Title": "betterCorq AI Schedule Extractor"
     }
 
-    import requests
-
-# 1️⃣ Step 1: Use a vision-capable model for OCR
-image_path = "schedule.jpg"
-ocr_response = requests.post(
-    "https://api.openai.com/v1/responses",
-    headers={"Authorization": f"Bearer {API_KEY}"},
-    json={
-        "model": "gpt-4o-mini",  # or "gpt-4o" for best results
-        "input": [
-            {
-                "role": "user",
-                "content": [
-                    {"type": "input_text", "text": "Extract all class names, days, and times from this image."},
-                    {"type": "input_image", "image_url": f"file://{image_path}"}
-                ],
-            }
-        ],
-    },
-)
-schedule_text = ocr_response.json()["output"][0]["content"][0]["text"]
-
-# 2️⃣ Step 2: Use a reasoning model to find free time
-reasoning_response = requests.post(
-    "https://api.openai.com/v1/responses",
-    headers={"Authorization": f"Bearer {API_KEY}"},
-    json={
-        "model": "polaris-alpha",  # or "kimi-k2-thinking" / "gpt-4o"
-        "input": f"Here is my school schedule:\n{schedule_text}\n\nFind all my free periods and format them as a calendar JSON."
-    },
-)
-
-calendar_json = reasoning_response.json()["output"][0]["content"][0]["text"]
-print(calendar_json)
-
-
-print("🚀 Sending request to OpenRouter API...")
+    print("🚀 Sending request to OpenRouter API...")
 
     # === Send request ===
     response = requests.post(
