@@ -150,12 +150,27 @@ body {
   color: var(--white);            /* optional hover effect */
 }
 
+.time-label {
+  background-color: var(--white);     /* match day-header background */
+  color: var(--black);              /* match day-header text */
+  border-right: 1px solid #ccc;     /* optional: keep grid lines consistent */
+  text-align: center;
+  font-weight: bold;
+  padding: 5px 0;
+}
+
+
+
+
+
 .calendar-clear-row {
   display: grid;
   grid-template-columns: 60px repeat(7, 1fr); /* aligns with calendar grid */
   text-align: center;
   margin-bottom: 5px;
 }
+
+
 
 .clear-spacer {
   height: 100%;

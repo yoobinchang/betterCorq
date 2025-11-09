@@ -28,7 +28,7 @@
 }
 .logo-link {
   display: flex;
-  align-items: center;
+  align-items: center; 
   height: 100%;
 }
 
@@ -109,11 +109,11 @@
   justify-content: left;     /* center horizontally */
   gap: 2.5vw;                   /* spacing between buttons */
   margin-top: 20px;            /* spacing from text above */
-  margin-left: 1vw;
+  margin-left: 0vw;
 }
 
 .button-container button {
-  width: 10vw;
+  width: 40vw;
   padding: 15px 30px;
   background-color: var(--white);
   color: var(--red);

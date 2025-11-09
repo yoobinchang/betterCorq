@@ -1,50 +1,15 @@
 :root {
   --nav-bar: #eeeee;
-  --red: rgb(213,32,39);
-  --dark-red: rgb(143,0,0);
-  --white: rgb(255, 255, 255);
-  --black: rgb(0, 0, 0);
+  --red: #bf1922;
+  --dark-red: #6b000d;
+  --med-red: #7c0808;
+  --white:  #f2eeee;
+  --black: rgb(15, 15, 15);
 }
 * {
   margin: 0;
   padding: 0;
   font-family: "Alumni Sans", sans-serif;
-}
-#nav-bar {
-  background-color: var(--dark-red);
-  display: flex;
-  height: 7vw;
-  justify-content: space-around;
-  align-items: center;
-  line-height: 5vw;
-}
-#nav-bar img{
-    width: 220px;
-    height: 40px;
-}
-#nav-side-bar{
-  position: absolute;
-  display: flex;               /* side by side */
-  justify-content: left;     /* center horizontally */
-  gap: 2.5vw;                   /* spacing between buttons */
-  margin-top: 20px;            /* spacing from text above */
-  margin-left: 80vw;
-
-}
-#nav-side-bar button:hover {
-  background-color: var(--red);   /* optional hover effect */
-  color: var(--white);            /* optional hover effect */
-}
-
-#nav-side-bar button {
-  width: 15vw;
-  padding: 15px 30px;
-  background-color: var(--white);
-  color: var(--red);
-  border: 5px solid var(--dark-red);
-  font-size: 2vw;
-  border-radius: 15px;
-  cursor: pointer;
 }
 .nav-bar-container {
     display: flex;
@@ -58,6 +23,29 @@
   height: 7vw;
   width: 40vw;
   background-color: var(--dark-red);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.logo-link img {
+  height: 60%;
+  margin-left: 3vw;
+  border-radius: 5px;
+}
+.block2 {
+  margin-right: 0vh;
+  align-items: right;
+  display: flex;
+  justify-content: flex-end;
+  height: 100%;
+  width: 15vw;
+  background-color: var(--med-red);
 }
 
 .nav-bar {
@@ -93,7 +81,7 @@
   display: flex;
   min-height: 100vh;
   gap: 20px;
-  justify-content: left;
+  justify-content: center;
   padding-top: 120px; /* Space for navigation bar */
   background-color: var(--white);
 }
@@ -104,11 +92,12 @@
 }
 
 .left-content h3 {
-  font-size: 60px;
+  color: var(--dark-red);
+  font-size: 15vh;
   margin-bottom: 20px;
 }
 .left-content p {
-    font-size: 22px;
+    font-size: 5vh;
     margin-bottom: 30px;
 }
 .event-container {
