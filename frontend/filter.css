@@ -30,6 +30,29 @@ body {
   height: 7vw;
   width: 40vw;
   background-color: var(--dark-red);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.logo-link img {
+  height: 60%;
+  margin-left: 3vw;
+  border-radius: 5px;
+}
+.block2 {
+  margin-right: 0vh;
+  align-items: right;
+  display: flex;
+  justify-content: flex-end;
+  height: 100%;
+  width: 15vw;
+  background-color: var(--med-red);
 }
 
 .nav-bar {
