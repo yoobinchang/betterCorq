@@ -6,3 +6,4 @@ flask-sqlalchemy
 pyjwt
 werkzeug
 sqlalchemy
+flask-cors
