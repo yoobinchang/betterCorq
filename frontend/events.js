@@ -1,9 +1,14 @@
-// Format date/time
+// Function to format the date and time
 function formatDateTime(dateTimeStr) {
-    if (!dateTimeStr.includes('2025')) {
-        return dateTimeStr;
+    if (!dateTimeStr || typeof dateTimeStr !== 'string') {
+        return 'Invalid Date';
     }
+
     const date = new Date(dateTimeStr);
+    if (isNaN(date.getTime())) {
+        return 'Invalid Date';
+    }
+
     return date.toLocaleString('en-US', {
         month: 'numeric',
         day: 'numeric',
@@ -14,7 +19,8 @@ function formatDateTime(dateTimeStr) {
     });
 }
 
-// Load events
+
+// Function to load events from the JSON file
 async function loadEvents() {
     try {
         const response = await fetch('/backend/data/events_est.json');
@@ -27,44 +33,54 @@ async function loadEvents() {
     }
 }
 
-// Display events
+// Function to display events
 function displayEvents(events) {
-  const container = document.querySelector('.event-container');
-  container.innerHTML = '';
+    const container = document.querySelector('.event-container');
+    container.innerHTML = ''; // Clear existing content
 
-  // Load free time ranges from localStorage
-  const freeTimes = JSON.parse(localStorage.getItem("userAvailability")) || [];
+    events.forEach(event => {
+        const eventDiv = document.createElement('div');
+        eventDiv.className = 'event';
+        eventDiv.dataset.name = event.name;
 
-  // Only keep events that overlap with free time
-  const filteredEvents = events.filter(event => eventFitsFreeTime(event, freeTimes, 15));
+        // Create the event content
+        eventDiv.innerHTML = `
+            <strong>${event.name}</strong><br>
+            <span class="event-time">${formatDateTime(event.start)} - ${event.end}</span><br>
+            <span class="event-location">${event.location}</span><br>
+            <span class="event-org">${event.organization}</span>
+    
+        `;
 
-  filteredEvents.forEach(event => {
-    // ... your existing eventDiv creation code ...
-  });
+        // Check if this event is already in the schedule
+        if (selectedEvents.some(e => e.name === event.name)) {
+            eventDiv.classList.add('selected');
+        }
+
+        // Add click event listener for selection
+        eventDiv.addEventListener('click', () => {
+            if (eventDiv.classList.contains('selected')) {
+                eventDiv.classList.remove('selected');
+                selectedEvents = selectedEvents.filter(e => e.name !== event.name);
+            } else {
+                eventDiv.classList.add('selected');
+                selectedEvents.push({
+                    name: event.name,
+                    start: event.start,
+                    end: event.end,
+                    location: event.location,
+                    organization: event.organization
+                });
+            }
+            localStorage.setItem('selectedEvents', JSON.stringify(selectedEvents));
+        });
+
+        container.appendChild(eventDiv);
+    });
 }
 
-
-// Check if an event overlaps with free time (with tolerance)
-function eventFitsFreeTime(event, freeTimes, toleranceMinutes = 15) {
-  const eventStart = new Date(event.start);
-  const eventEnd   = new Date(event.end);
-
-  return freeTimes.some(free => {
-    const freeStart = new Date(`${free.day}T${free.from}:00`);
-    const freeEnd   = new Date(`${free.day}T${free.to}:00`);
-
-    // Apply tolerance: extend free time window slightly
-    const freeStartTol = new Date(freeStart.getTime() - toleranceMinutes * 60000);
-    const freeEndTol   = new Date(freeEnd.getTime() + toleranceMinutes * 60000);
-
-    // Overlap condition: event and free time intersect
-    return eventStart < freeEndTol && eventEnd > freeStartTol;
-  });
-}
-
-
-// Initialize selected events
+// Initialize selected events from localStorage
 let selectedEvents = JSON.parse(localStorage.getItem('selectedEvents')) || [];
 
-// Load events on page load
+// Load events when the page loads
 document.addEventListener('DOMContentLoaded', loadEvents);

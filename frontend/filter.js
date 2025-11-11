@@ -28,7 +28,6 @@ document.getElementById("file-upload").addEventListener("change", async (event) 
   try {
     showCustomAlert("📤 Uploading schedule... please wait");
 
-    // ✅ Flask endpoint updated
     const response = await fetch("http://127.0.0.1:5000/api/ai/upload-schedule", {
       method: "POST",
       body: formData,
@@ -37,15 +36,15 @@ document.getElementById("file-upload").addEventListener("change", async (event) 
     if (!response.ok) throw new Error("Upload failed");
     const data = await response.json();
 
-    showCustomAlert("✅ Schedule processed! Highlighting your free time...");
+    showCustomAlert("Schedule processed! Highlighting your free time...");
 
     if (data.data) {
-      localStorage.setItem("aiFreeTime", JSON.stringify(data.data)); // ✅ Save AI result
+      localStorage.setItem("aiFreeTime", JSON.stringify(data.data));
       highlightFreeTime(data.data);
     }
   } catch (err) {
     console.error(err);
-    showCustomAlert("❌ Failed to upload schedule.");
+    showCustomAlert("Failed to upload schedule.");
   }
 });
 
@@ -56,7 +55,7 @@ function showCustomAlert(message) {
   const alertBox = document.getElementById("custom-alert");
   alertBox.textContent = message;
   alertBox.classList.remove("hidden", "visible");
-  void alertBox.offsetWidth; // restart animation
+  void alertBox.offsetWidth;
   alertBox.classList.add("visible");
   setTimeout(() => {
     alertBox.classList.remove("visible");
@@ -67,41 +66,49 @@ function showCustomAlert(message) {
 // ====================
 // 🗓 CALENDAR GRID GENERATION
 // ====================
-for (let i = 16; i < intervalCount; i++) {
-  let hour = Math.floor(i / 2);
-  let minute = (i % 2) * 30;
-  let timeStr = `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
+function generateCalendarGrid() {
+  for (let i = 16; i < intervalCount; i++) {
+    let hour = Math.floor(i / 2);
+    let minute = (i % 2) * 30;
+    let timeStr = `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
 
-  const timeCell = document.createElement("div");
-  timeCell.classList.add("time-cell");
-  timeCell.textContent = timeStr;
-  schedule.appendChild(timeCell);
+    const timeCell = document.createElement("div");
+    timeCell.classList.add("time-cell");
+    timeCell.textContent = timeStr;
+    schedule.appendChild(timeCell);
 
-  for (let j = 0; j < days; j++) {
-    const cell = document.createElement("div");
-    cell.classList.add("cell");
-    cell.style.height = cellHeight + "px";
+    for (let j = 0; j < days; j++) {
+      const cell = document.createElement("div");
+      cell.classList.add("cell");
+      cell.style.height = cellHeight + "px";
 
-    const today = new Date();
-    const cellDate = new Date(today);
-    cellDate.setDate(today.getDate() + j);
-    const dayStr = cellDate.toISOString().split("T")[0]; // "YYYY-MM-DD"
+      const today = new Date();
+      const cellDate = new Date(today);
+      cellDate.setDate(today.getDate() + j);
+      const dayStr = cellDate.toISOString().split("T")[0];
 
-    cell.setAttribute("data-day", dayStr);
-    cell.setAttribute("data-time", timeStr);
+      cell.setAttribute("data-day", dayStr);
+      cell.setAttribute("data-time", timeStr);
 
-    cell.addEventListener("mousedown", () => {
-      isMouseDown = true;
-      toggleMode = cell.classList.contains("selected") ? "remove" : "add";
-      cell.classList.toggle("selected");
-    });
+      cell.addEventListener("mousedown", () => {
+        isMouseDown = true;
+        toggleMode = cell.classList.contains("selected") ? "remove" : "add";
+        cell.classList.toggle("selected");
+      });
 
-    cell.addEventListener("mouseover", () => {
-      if (isMouseDown && toggleMode) cell.classList[toggleMode]("selected");
-    });
+      cell.addEventListener("mouseover", () => {
+        if (isMouseDown && toggleMode) cell.classList[toggleMode]("selected");
+      });
 
-    schedule.appendChild(cell);
+      schedule.appendChild(cell);
+    }
   }
+}
+
+// Make sure grid is generated only once
+if (!schedule.dataset.generated) {
+  schedule.dataset.generated = "true";
+  generateCalendarGrid();
 }
 
 // ====================
@@ -156,18 +163,17 @@ document.getElementById("save-button").addEventListener("click", async () => {
   localStorage.setItem("userAvailability", JSON.stringify(selectedTimes));
 
   try {
-    // ✅ Updated route
     const response = await fetch("http://127.0.0.1:5000/api/schedule/save-free-time", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(selectedTimes),
     });
 
-    if (response.ok) showCustomAlert("✅ Your schedule has been saved!");
-    else showCustomAlert("⚠️ Server error while saving schedule.");
+    if (response.ok) showCustomAlert("Your schedule has been saved!");
+    else showCustomAlert("Server error while saving schedule.");
   } catch (error) {
     console.error(error);
-    showCustomAlert("❌ Failed to connect to server.");
+    showCustomAlert("Failed to connect to server.");
   }
 });
 
@@ -225,8 +231,6 @@ document.getElementById("clear-button").addEventListener("click", () => {
 // ====================
 // 🎨 HIGHLIGHT FREE TIME (AI result → paint on grid)
 // ====================
-
-// 🧭 Helper: weekday ("Mon") → actual date string ("2025-11-10")
 function dateStrForWeekday(dayName) {
   const shortDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   for (let offset = 0; offset < 7; offset++) {
@@ -250,8 +254,7 @@ function highlightFreeTime(freeTimeData) {
 
       while (h < endH || (h === endH && m < endM)) {
         const timeStr = `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
-        const sel = `.cell[data-day="${dayStr}"][data-time="${timeStr}"]`;
-        const cell = document.querySelector(sel);
+        const cell = document.querySelector(`.cell[data-day="${dayStr}"][data-time="${timeStr}"]`);
         if (cell) cell.classList.add("selected");
 
         m += 30;
