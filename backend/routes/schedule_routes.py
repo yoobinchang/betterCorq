@@ -39,7 +39,7 @@ def generate_matched_events_route():
     try:
         result = generate_matched_events()
         return jsonify({
-            "message": "✅ Events matched successfully.",
+            "message": "Events matched successfully.",
             "matched_events_count": result["matched_events_count"],
             "matched_events": result["matched_events"]
         }), 200

@@ -12,7 +12,7 @@ def get_recommended_events():
     try:
         result = generate_matched_events()
         return jsonify({
-            "message": "✅ Recommended events generated successfully.",
+            "message": "Recommended events generated successfully.",
             "count": result["matched_events_count"],
             "events": result["matched_events"]
         }), 200
