@@ -21,23 +21,23 @@ def upload_schedule():
         if file.filename == "":
             return jsonify({"error": "No file selected"}), 400
 
-        print(f"📸 File received: {file.filename}")
+        print(f"File received: {file.filename}")
 
         # Step 1: AI extracts busy schedule (Mon, Tue, ...)
         busy = extract_schedule_from_image(file)
 
         # Step 2: Convert busy → free time (not saved yet)
         free_time = calc_free_time_only(busy)
-        print("✅ Free time calculated successfully")
+        print("Free time calculated successfully")
 
         # Step 3: Return free-time preview to frontend
         return jsonify({
-            "message": "✅ Schedule extracted successfully",
+            "message": "Your schedule applied successfully",
             "data": free_time
         }), 200
 
     except Exception as e:
-        print(f"❌ Upload failed: {e}")
+        print(f"Upload failed: {e}")
         return jsonify({"error": str(e)}), 500
 
 
@@ -56,10 +56,10 @@ def extract_schedule_only():
         result = extract_schedule_from_image(file)
 
         return jsonify({
-            "message": "✅ Busy schedule extracted successfully",
+            "message": "Busy schedule extracted successfully",
             "data": result
         }), 200
 
     except Exception as e:
-        print(f"❌ Extraction failed: {e}")
+        print(f"Extraction failed: {e}")
         return jsonify({"error": str(e)}), 500

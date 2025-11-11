@@ -9,7 +9,7 @@ from routes.event_routes import event_bp    # Fetch/recommend events
 
 # === Create Flask App ===
 app = Flask(__name__)
-CORS(app)  # ✅ Allow frontend (e.g., localhost:3000 / 5173)
+CORS(app, resources={r"/api/*": {"origins": "*"}})  # Enable CORS for /api/* routes
 
 # === Register Blueprints with prefixes ===
 app.register_blueprint(ai_bp, url_prefix="/api/ai")
